@@ -159,8 +159,9 @@ img {
 .hero {
   position: relative;
   min-height: 85vh;
+  /* Updated with Varanasi ghats background */
   background: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.55)), 
-              url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+              url('https://www.gettyimages.com.au/videos/varanasi') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
