@@ -1,0 +1,40 @@
+// server/server.js
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
+
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json()); // Parses incoming JSON data
+
+// Sample API Route for Destinations
+app.get('/api/destinations', (req, res) => {
+  const destinations = [
+    { id: 1, title: 'Bali Escape', price: '$899', rating: 4.9 },
+    { id: 2, title: 'Italian Coastal Getaway', price: '$1250', rating: 4.8 },
+    { id: 3, title: 'Cultural Kyoto', price: '$1499', rating: 5.0 }
+  ];
+  res.json(destinations);
+});
+
+// Booking Submission Endpoint
+app.post('/api/book', (req, res) => {
+  const { destination, name, email, date } = req.body;
+  
+  if (!name || !email) {
+    return res.status(400).json({ success: false, message: 'Please provide name and email' });
+  }
+
+  // Here you would save to MongoDB in a production app
+  console.log('New Booking:', { destination, name, email, date });
+
+  res.status(201).json({
+    success: true,
+    message: 'Booking request received! We will contact you shortly.'
+  });
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -44,3 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+// Example: Fetching destinations dynamically from your backend
+async function fetchDestinations() {
+  try {
+    const response = await fetch('http://localhost:5000/api/destinations');
+    const data = await response.json();
+    console.log('Destinations from Server:', data);
+    // Dynamically insert cards into HTML grid here
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+fetchDestinations();

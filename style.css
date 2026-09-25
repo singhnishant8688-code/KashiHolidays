@@ -118,8 +118,11 @@ img {
   padding: 1rem 2rem;
 }
 
-.car{
-    width :50px;
+.car {
+  width: 40px;
+  height: auto;
+  object-fit: contain;
+  vertical-align: middle;
 }
 .logo {
   font-size: 1.5rem;
@@ -159,9 +162,8 @@ img {
 .hero {
   position: relative;
   min-height: 85vh;
-  /* Updated with Varanasi ghats background */
-  background: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.55)), 
-              url('https://www.gettyimages.com.au/videos/varanasi') center/cover no-repeat;
+  background: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.65)), 
+              url('assets/banaras_hero.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -418,18 +420,34 @@ img {
 }
 
 .social-links a {
-  width: 36px;
-  height: 36px;
-  background-color: rgba(255, 255, 255, 0.1);
+  width: 42px;
+  height: 42px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--white);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.2rem;
   transition: var(--transition);
 }
 
-.social-links a:hover {
-  background-color: var(--primary);
+.social-links a.insta:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.social-links a.whatsapp:hover {
+  background-color: #25D366;
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.social-links a.phone:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+  transform: translateY(-3px);
 }
 
 .footer-links h4, 
@@ -568,4 +586,136 @@ img {
   .ghat-overlay h3 {
     font-size: 1.2rem;
   }
+}
+
+/* ─── Cab & Taxi Rates Section ─── */
+.cab-rates-section {
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 0 1.5rem;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-color: var(--white);
+  margin-bottom: 2.5rem;
+}
+
+.cab-rates-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 700px;
+}
+
+.cab-rates-table th {
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 1.2rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cab-rates-table td {
+  padding: 1.1rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.cab-rates-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.cab-rates-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.vehicle-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.vehicle-info i {
+  font-size: 1.6rem;
+  color: var(--primary);
+}
+
+.vehicle-info strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--dark);
+}
+
+.vehicle-info span {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.price {
+  font-weight: 700;
+  color: #0d9488;
+  font-size: 1.05rem;
+}
+
+.btn-sm-book {
+  background-color: #25D366;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition);
+}
+
+.btn-sm-book:hover {
+  background-color: #1eb954;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+.cab-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.cab-feature-card {
+  background-color: var(--white);
+  padding: 1.8rem;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.cab-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.cab-feature-card i {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.8rem;
+}
+
+.cab-feature-card h4 {
+  font-size: 1.1rem;
+  color: var(--dark);
+  margin-bottom: 0.4rem;
+}
+
+.cab-feature-card p {
+  font-size: 0.9rem;
+  color: var(--gray);
 }
