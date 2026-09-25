@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore top travel destinations, tour packages, and unforgettable adventures around the world.">
+  <title>KashiHolidays</title>
+  
+  
+  <link rel="stylesheet" href="style.css">
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  
+  <header class="header">
+    <nav class="navbar" aria-label="Main Navigation">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-plane-departure"></i>VaranasiHolidays
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#destinations" class="nav-link">Destinations</a></li>
+        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+        <li><a href="#contact" class="nav-link btn-primary">Book Now</a></li>
+      </ul>
+
+      
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Welcome To Traveling World</h1>
+        <p>Explore handpicked luxury tours, tropical escapes, and mountain expeditions across the india.</p>
+        
+        
+        <form class="search-form" action="#" method="GET">
+          <div class="form-group">
+            <label for="destination"><i class="fa-solid fa-location-dot"></i> Destination</label>
+            <input type="text" id="destination" placeholder="Where do you want to go?">
+          </div>
+          
+          <div class="form-group">
+            <label for="check-in"><i class="fa-regular fa-calendar-days"></i> Departure</label>
+            <input type="date" id="check-in">
+          </div>
+
+          <div class="form-group">
+            <label for="guests"><i class="fa-solid fa-user-group"></i> Travelers</label>
+            <select id="guests">
+              <option value="1">1 Person</option>
+              <option value="2">2 Persons</option>
+              <option value="3-5">3 - 5 Persons</option>
+              <option value="group">Group (6+)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-search">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+          </button>
+        </form>
+      </div>
+    </section>
+
+    
+    <section class="destinations" id="destinations">
+      <div class="section-header">
+        <h2>Top Featured Destinations</h2>
+        <p>Popular destinations loved by thousands of travelers each year.</p>
+      </div>
+
+      <div class="cards-grid">
+        
+        <article class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80" alt="Tropical resort in Bali with palm trees" loading="lazy">
+            <span class="badge">$899 / 7 Days</span>
+          </div>
+          <div class="card-body">
+            <span class="location"><i class="fa-solid fa-location-dot"></i> Bali, Indonesia</span>
+            <h3>Tropical Paradise Escape</h3>
+            <p>Experience crystal clear beaches, serene temples, and lush tropical landscapes.</p>
+            <div class="card-footer">
+              <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (120)</span>
+              <a href="#" class="btn-secondary">View Details</a>
+            </div>
+          </div>
+        </article>
+
+        
+        <article class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="Colorful houses on Amalfi Coast cliffside" loading="lazy">
+            <span class="badge">$1,250 / 5 Days</span>
+          </div>
+          <div class="card-body">
+            <span class="location"><i class="fa-solid fa-location-dot"></i> Amalfi Coast, Italy</span>
+            <h3>Italian Coastal Getaway</h3>
+            <p>Sail along dramatic cliffside villages, taste world-class cuisine, and enjoy coastal sunsets.</p>
+            <div class="card-footer">
+              <span class="rating"><i class="fa-solid fa-star"></i> 4.8 (95)</span>
+              <a href="#" class="btn-secondary">View Details</a>
+            </div>
+          </div>
+        </article>
+
+        
+        <article class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" alt="Traditional Japanese pagoda with cherry blossoms" loading="lazy">
+            <span class="badge">$1,499 / 10 Days</span>
+          </div>
+          <div class="card-body">
+            <span class="location"><i class="fa-solid fa-location-dot"></i> Kyoto, Japan</span>
+            <h3>Cultural Heritage Tour</h3>
+            <p>Discover historic shrines, traditional tea ceremonies, and breathtaking cherry blossoms.</p>
+            <div class="card-footer">
+              <span class="rating"><i class="fa-solid fa-star"></i> 5.0 (210)</span>
+              <a href="#" class="btn-secondary">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    
+    <section class="testimonials" id="testimonials">
+      <div class="section-header">
+        <h2>What Our Travelers Say</h2>
+        <p>Real stories from happy adventurers who traveled with us.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <blockquote class="testimonial-card">
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p>"The Bali trip was flawlessly organized from start to finish. Our local guide was knowledgeable, and the oceanview resort exceeded our expectations!"</p>
+          <cite class="client-info">
+            <strong>Sarah Jenkins</strong>
+            <span>Solo Traveler</span>
+          </cite>
+        </blockquote>
+
+        <blockquote class="testimonial-card">
+          <div class="stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p>"Booking our family trip to Italy through Wanderlust saved us so much stress. Smooth airport transfers and incredible guided tours."</p>
+          <cite class="client-info">
+            <strong>Mark &amp; Elena Vance</strong>
+            <span>Family Tour</span>
+          </cite>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-about">
+        <a href="#" class="logo text-white">
+          <i class="fa-solid fa-plane-departure"></i> VaranasiHolidays
+        </a>
+        <p>Making dream vacations a reality with curated tours, best prices, and 24/7 travel support.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fa-solid fa-envelope"></i> info@wanderlusttours.com</p>
+        <p><i class="fa-solid fa-phone"></i> 6392xx1435</p>
+        <p><i class="fa-solid fa-location-dot"></i> Varanasi Uttar Pradesh India</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Wanderlust Travel Agency. All rights reserved.</p>
+    </div>
+  </footer>
+
+   
+  <script src="script.js"></script>
+</body>
+</html>
