@@ -7,7 +7,7 @@
   <title>KashiHolidays</title>
   
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <link rel="stylesheet" href="style.css">
 
   
@@ -74,7 +74,7 @@
             </a>
           </li>
           <li>
-            <a href="#online-booking" class="nav-link">
+            <a href="#travel-booking" class="nav-link">
               <span><i class="fa-solid fa-route"></i> Travel Booking</span>
               <i class="fa-solid fa-chevron-right arrow-icon"></i>
             </a>
@@ -115,7 +115,7 @@
         <ul class="side-nav-links">
           <li>
             <a href="#testimonials" class="nav-link">
-              <span><i class="fa-solid fa-user-check"></i> Review My Profile</span>
+              <span><i class="fa-solid fa-user-check"></i> Reviews</span>
               <i class="fa-solid fa-chevron-right arrow-icon"></i>
             </a>
           </li>
@@ -135,120 +135,17 @@
 
     <section class="hero" id="home">
       <div class="hero-content">
-        
         <h1>Welcome To KashiHolidays</h1>
-        <p>Explore handpicked luxury tours, sacred ghats & ancient temples of Banaras.</p>
-        <a href="#online-booking" class="btn-primary">Book Taxi Now</a>
-      </div>
-    </section>
-
-    <!-- Online Taxi Booking Card Section -->
-    <section class="online-booking-section" id="online-booking">
-      <div class="booking-banner-header">
-        <h2>Book Your <span class="highlight-text">Taxi in Varanasi</span> Online</h2>
-        <p>Fill in your trip details below &amp; get instant fare estimate. No advance payment required — pay after your ride. Trusted by <strong>1,000+ happy travellers</strong> across Kashi.</p>
-        
-        <div class="banner-badges">
-          <span class="badge-pill"><i class="fa-solid fa-shield-halved"></i> No Advance</span>
-          <span class="badge-pill"><i class="fa-solid fa-bolt"></i> Instant Confirm</span>
-          <span class="badge-pill"><i class="fa-solid fa-ban"></i> Free Cancellation</span>
-          <span class="badge-pill"><i class="fa-solid fa-headset"></i> 24/7 Support</span>
-        </div>
+        <p>Explore handpicked luxury tours, sacred ghats &amp; ancient temples of Banaras.</p>
+        <button type="button" class="btn-primary open-booking-trigger" id="heroBookBtn"><i class="fa-solid fa-taxi"></i> Book Taxi Now</button>
       </div>
 
-      <div class="booking-card-wrapper">
-        <!-- Step Indicator Bar -->
-        <div class="step-indicator-bar">
-          <div class="step-item active" id="step-btn-1">
-            <div class="step-num">1</div>
-            <span class="step-label">TRIP DETAILS</span>
-          </div>
-          <div class="step-line"></div>
-          <div class="step-item" id="step-btn-2">
-            <div class="step-num">2</div>
-            <span class="step-label">VEHICLE</span>
-          </div>
-          <div class="step-line"></div>
-          <div class="step-item" id="step-btn-3">
-            <div class="step-num">3</div>
-            <span class="step-label">YOUR INFO</span>
-          </div>
-          <div class="step-line"></div>
-          <div class="step-item" id="step-btn-4">
-            <div class="step-num">4</div>
-            <span class="step-label">CONFIRM</span>
-          </div>
-        </div>
-
-        <!-- Form Card Body -->
-        <div class="booking-form-card">
-          <div class="card-title-row">
-            <div class="icon-circle"><i class="fa-solid fa-route"></i></div>
-            <div>
-              <h3>Trip Details</h3>
-              <p>Tell us where you're going</p>
-            </div>
-          </div>
-
-          <form id="taxi-booking-form" onsubmit="event.preventDefault(); submitTaxiBooking();">
-            
-            <!-- Service Type Selector -->
-            <div class="form-row">
-              <label class="form-label-title"><i class="fa-solid fa-list-check"></i> SERVICE TYPE</label>
-              <div class="service-type-tabs">
-                <button type="button" class="tab-btn active" data-type="One Way"><i class="fa-solid fa-arrow-right"></i> ONE WAY</button>
-                <button type="button" class="tab-btn" data-type="Round Trip"><i class="fa-solid fa-rotate"></i> ROUND TRIP</button>
-                <button type="button" class="tab-btn" data-type="Local"><i class="fa-solid fa-city"></i> LOCAL</button>
-                <button type="button" class="tab-btn" data-type="Airport"><i class="fa-solid fa-plane"></i> AIRPORT</button>
-              </div>
-            </div>
-
-            <!-- Inputs Grid -->
-            <div class="form-fields-grid">
-              <div class="input-field-group">
-                <label><i class="fa-solid fa-location-dot"></i> PICKUP LOCATION *</label>
-                <input type="text" id="pickup-location" placeholder="e.g. Varanasi Airport, Hotel Name, Railway Station" required>
-              </div>
-
-              <div class="input-field-group">
-                <label><i class="fa-solid fa-location-arrow"></i> DROP LOCATION *</label>
-                <input type="text" id="drop-location" placeholder="e.g. Dashashwamedh Ghat, Kashi Vishwanath, Ayodhya" required>
-              </div>
-
-              <div class="input-field-group">
-                <label><i class="fa-solid fa-calendar-days"></i> PICKUP DATE &amp; TIME *</label>
-                <input type="datetime-local" id="pickup-datetime" required>
-              </div>
-
-              <div class="input-field-group">
-                <label><i class="fa-solid fa-taxi"></i> SELECT VEHICLE *</label>
-                <select id="selected-vehicle" required>
-                  <option value="Sedan (Dzire/Etios) - ₹899">Sedan (Dzire / Etios) - ₹899 / Ride</option>
-                  <option value="SUV (Ertiga/Carens) - ₹1,399">SUV (Ertiga / Carens) - ₹1,399 / Ride</option>
-                  <option value="Innova Crysta - ₹1,899">Innova Crysta (Luxury AC) - ₹1,899 / Ride</option>
-                  <option value="Tempo Traveller - ₹2,999">Tempo Traveller (12-17 Seater) - ₹2,999 / Ride</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-fields-grid">
-              <div class="input-field-group">
-                <label><i class="fa-solid fa-user"></i> YOUR NAME *</label>
-                <input type="text" id="passenger-name" placeholder="Enter full name" required>
-              </div>
-
-              <div class="input-field-group">
-                <label><i class="fa-solid fa-phone"></i> MOBILE NUMBER (WHATSAPP) *</label>
-                <input type="tel" id="passenger-phone" placeholder="Enter 10 digit mobile number" required>
-              </div>
-            </div>
-
-            <div class="form-action-row">
-              <button type="submit" class="btn-submit-booking"><i class="fa-brands fa-whatsapp"></i> Calculate Fare &amp; Confirm Booking</button>
-            </div>
-          </form>
-
-        </div>
+      <!-- Floating Trust Strip overlaying bottom edge -->
+      <div class="hero-trust-bar">
+        <div class="trust-badge"><i class="fa-solid fa-bolt text-gold"></i> Instant Confirmation</div>
+        <div class="trust-badge"><i class="fa-solid fa-shield-halved text-blue"></i> No Advance Payment</div>
+        <div class="trust-badge"><i class="fa-solid fa-star text-gold"></i> 4.9 Star Service</div>
+        <div class="trust-badge"><i class="fa-solid fa-headset text-green"></i> 24/7 Support Desk</div>
       </div>
     </section>
     
@@ -292,7 +189,7 @@
           </div>
 
           <div class="cab-card-footer">
-            <a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20a%20Sedan%20(Dzire/Etios)%20cab" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book Sedan Cab</a>
+            <a href="https://wa.me/8858852339?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20a%20Sedan%20(Dzire/Etios)%20cab" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book Sedan Cab</a>
           </div>
         </div>
 
@@ -327,7 +224,7 @@
           </div>
 
           <div class="cab-card-footer">
-            <a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20an%20SUV%20(Ertiga)%20cab" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book SUV Cab</a>
+            <a href="https://wa.me/8858852339?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20an%20SUV%20(Ertiga)%20cab" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book SUV Cab</a>
           </div>
         </div>
 
@@ -362,7 +259,7 @@
           </div>
 
           <div class="cab-card-footer">
-            <a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20an%20Innova%20Crysta%20cab" target="_blank" class="btn-cab-book btn-primary-book"><i class="fa-brands fa-whatsapp"></i> Book Innova Crysta</a>
+            <a href="https://wa.me/8858852339?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20an%20Innova%20Crysta%20cab" target="_blank" class="btn-cab-book btn-primary-book"><i class="fa-brands fa-whatsapp"></i> Book Innova Crysta</a>
           </div>
         </div>
 
@@ -397,7 +294,7 @@
           </div>
 
           <div class="cab-card-footer">
-            <a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20a%20Tempo%20Traveller" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book Tempo Traveller</a>
+            <a href="https://wa.me/8858852339?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20a%20Tempo%20Traveller" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book Tempo Traveller</a>
           </div>
         </div>
 
@@ -423,9 +320,106 @@
     </section>
 
     
+    <!-- Travel Booking (Outstation Tours) Section -->
+    <section class="destinations" id="travel-booking">
+      <div class="section-header">
+        <h2>Outstation Travel Booking</h2>
+        <p>Book private AC cabs &amp; guided packages from Varanasi to holy pilgrimage destinations with instant booking.</p>
+      </div>
+
+      <div class="cards-grid">
+        
+        <!-- Card 1: Varanasi to Ayodhya -->
+        <article class="card">
+          <div class="card-img-container">
+            <img src="assets/travel_ayodhya.jpg" alt="Varanasi to Ayodhya Tour Cab Booking" loading="lazy">
+            <span class="badge">₹2,999 / Tour</span>
+          </div>
+          <div class="card-body">
+            <span class="location"><i class="fa-solid fa-location-dot"></i> Ayodhya Ram Mandir Tour</span>
+            <h3>Varanasi to Ayodhya</h3>
+            <p>Comfortable AC cab trip to Sri Ram Janmabhoomi Mandir, Hanuman Garhi, Saryu Ghat Aarti, and Kanak Bhawan.</p>
+            <div class="card-footer">
+              <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (420)</span>
+              <button type="button" class="btn-secondary open-booking-trigger">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Varanasi to Prayagraj -->
+        <article class="card">
+          <div class="card-img-container">
+            <img src="assets/travel_prayagraj.jpg" alt="Varanasi to Prayagraj Triveni Sangam Cab Booking" loading="lazy">
+            <span class="badge">₹2,499 / Tour</span>
+          </div>
+          <div class="card-body">
+            <span class="location"><i class="fa-solid fa-location-dot"></i> Triveni Sangam &amp; Fort</span>
+            <h3>Varanasi to Prayagraj</h3>
+            <p>Sacred day trip to Triveni Sangam confluence, Anand Bhawan, Bade Hanuman Temple, and Alopi Devi Shaktipeeth.</p>
+            <div class="card-footer">
+              <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (390)</span>
+              <button type="button" class="btn-secondary open-booking-trigger">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Varanasi to Gaya -->
+        <article class="card">
+          <div class="card-img-container">
+            <img src="assets/travel_gaya.jpg" alt="Varanasi to Gaya Pind Daan Pilgrimage Cab" loading="lazy">
+            <span class="badge">₹3,999 / Tour</span>
+          </div>
+          <div class="card-body">
+            <span class="location"><i class="fa-solid fa-location-dot"></i> Pind Daan &amp; Bodhgaya</span>
+            <h3>Varanasi to Gaya</h3>
+            <p>Spiritual pilgrimage for Pind Daan ritual at Vishnupad Temple Gaya and Mahabodhi Temple at Bodhgaya.</p>
+            <div class="card-footer">
+              <span class="rating"><i class="fa-solid fa-star"></i> 4.8 (310)</span>
+              <button type="button" class="btn-secondary open-booking-trigger">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: Varanasi to Vindhyachal -->
+        <article class="card">
+          <div class="card-img-container">
+            <img src="assets/travel_vindhyachal.jpg" alt="Varanasi to Vindhyachal Temple Tour Cab" loading="lazy">
+            <span class="badge">₹1,999 / Tour</span>
+          </div>
+          <div class="card-body">
+            <span class="location"><i class="fa-solid fa-location-dot"></i> Maa Vindhyavasini Dham</span>
+            <h3>Varanasi to Vindhyachal</h3>
+            <p>Divine Shaktipeeth darshan tour covering Maa Vindhyavasini, Kali Khoh, and Ashtabhuja temple Trikon Yatra.</p>
+            <div class="card-footer">
+              <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (270)</span>
+              <button type="button" class="btn-secondary open-booking-trigger">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5: Varanasi to Chitrakoot -->
+        <article class="card">
+          <div class="card-img-container">
+            <img src="assets/travel_chitrakoot.jpg" alt="Varanasi to Chitrakoot Ram Ghat Tour" loading="lazy">
+            <span class="badge">₹4,499 / Tour</span>
+          </div>
+          <div class="card-body">
+            <span class="location"><i class="fa-solid fa-location-dot"></i> Holy Ram Ghat &amp; Hills</span>
+            <h3>Varanasi to Chitrakoot</h3>
+            <p>Explore sacred Ram Ghat, Kamadgiri Parikrama, Gupt Godavari caves, and Sati Anusuya Ashram in MP hills.</p>
+            <div class="card-footer">
+              <span class="rating"><i class="fa-solid fa-star"></i> 4.9 (180)</span>
+              <button type="button" class="btn-secondary open-booking-trigger">Book Now</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
     <section class="destinations" id="destinations">
       <div class="section-header">
-        <h2>Our Services & Kashi Packages</h2>
+        <h2>Our Services &amp; Kashi Packages</h2>
         <p>Explore sacred ghats, divine temple darshan, river boat rides, and authentic Banaras heritage tours.</p>
       </div>
 
@@ -536,25 +530,7 @@
     </section>
 
     <!-- Cab Features Grid (Horizontal Row) -->
-    <div class="cab-features-section">
-      <div class="cab-features-grid">
-        <div class="cab-feature-card">
-          <i class="fa-solid fa-clock"></i>
-          <h4>24/7 Availability</h4>
-          <p>Instant pickup anywhere in Varanasi &amp; Airport.</p>
-        </div>
-        <div class="cab-feature-card">
-          <i class="fa-solid fa-shield-halved"></i>
-          <h4>Verified Drivers</h4>
-          <p>Courteous, local &amp; highly experienced drivers.</p>
-        </div>
-        <div class="cab-feature-card">
-          <i class="fa-solid fa-tags"></i>
-          <h4>No Hidden Charges</h4>
-          <p>Transparent pricing with toll &amp; parking options.</p>
-        </div>
-      </div>
-    </div>
+   
 
     <section class="testimonials" id="testimonials">
       <div class="section-header">
@@ -639,6 +615,12 @@
       <button class="modal-close-btn" id="closeModalBtn" aria-label="Close Popup">&times;</button>
     </div>
 
+    <!-- Car Showcase Banner -->
+    <div class="modal-car-showcase">
+      <img src="assets/popup_car.jpg" alt="Varanasi Innova Crysta Luxury Taxi" loading="lazy">
+      <div class="car-badge"><i class="fa-solid fa-car"></i> Luxury AC Cabs</div>
+    </div>
+
     <!-- Modal Body -->
     <div class="modal-body">
       <h4 class="modal-subtitle">Varanasi's Best Taxi Service — Get Your Cab Allocated Instantly!</h4>
@@ -646,9 +628,9 @@
       <!-- Phone Calling Box -->
       <div class="contact-box call-box">
         <span class="box-badge badge-orange"><i class="fa-solid fa-phone"></i> TAP TO PLACE CALL</span>
-        <a href="tel:+918858852339" class="phone-number text-red">+91 8858852339 </a>
+        <a href="tel:8858852339" class="phone-number text-red">+91 8858852339</a>
         <p>Click above number to call our booking desk directly now.</p>
-        <a href="tel:+918858852339" class="modal-btn btn-orange">
+        <a href="tel:8858852339" class="modal-btn btn-orange">
           <i class="fa-solid fa-phone"></i> CALL NOW FOR INSTANT TAXI
         </a>
       </div>
@@ -674,7 +656,94 @@
   </div>
 </div>
 
-   
+  <!-- ===== BOOKING FORM MODAL ===== -->
+  <div class="booking-form-overlay" id="bookingFormModal" aria-hidden="true">
+    <div class="booking-form-modal-card">
+
+      <!-- Modal Header -->
+      <div class="bfm-header">
+        <div class="bfm-header-left">
+          <div class="bfm-logo-icon"><i class="fa-solid fa-taxi"></i></div>
+          <div>
+            <h3>Book Your Taxi</h3>
+            <p>Varanasi's Trusted Cab Service</p>
+          </div>
+        </div>
+        <button class="bfm-close" id="closeBookingFormBtn" aria-label="Close">&times;</button>
+      </div>
+
+      <!-- Step Indicator -->
+      <div class="bfm-step-bar">
+        <div class="bfm-step active"><div class="bfm-step-num">1</div><span>TRIP DETAILS</span></div>
+        <div class="bfm-step-line"></div>
+        <div class="bfm-step"><div class="bfm-step-num">2</div><span>VEHICLE</span></div>
+        <div class="bfm-step-line"></div>
+        <div class="bfm-step"><div class="bfm-step-num">3</div><span>YOUR INFO</span></div>
+        <div class="bfm-step-line"></div>
+        <div class="bfm-step"><div class="bfm-step-num">4</div><span>CONFIRM</span></div>
+      </div>
+
+      <!-- Form Body -->
+      <div class="bfm-body">
+        <div class="bfm-section-title">
+          <div class="bfm-icon-circle"><i class="fa-solid fa-route"></i></div>
+          <div><h4>Trip Details</h4><p>Tell us where you're going</p></div>
+        </div>
+
+        <form id="bfm-form" onsubmit="event.preventDefault(); submitBookingFormModal();">
+          <div class="bfm-label">SERVICE TYPE</div>
+          <div class="bfm-tabs">
+            <button type="button" class="bfm-tab active" data-type="One Way"><i class="fa-solid fa-arrow-right"></i> ONE WAY</button>
+            <button type="button" class="bfm-tab" data-type="Round Trip"><i class="fa-solid fa-rotate"></i> ROUND TRIP</button>
+            <button type="button" class="bfm-tab" data-type="Local"><i class="fa-solid fa-city"></i> LOCAL</button>
+            <button type="button" class="bfm-tab" data-type="Airport"><i class="fa-solid fa-plane"></i> AIRPORT</button>
+          </div>
+
+          <div class="bfm-fields-grid">
+            <div class="bfm-field">
+              <label><i class="fa-solid fa-location-dot"></i> PICKUP LOCATION *</label>
+              <input type="text" id="bfm-pickup" placeholder="e.g. Varanasi Airport, Hotel Name" required>
+            </div>
+            <div class="bfm-field">
+              <label><i class="fa-solid fa-location-arrow"></i> DROP LOCATION *</label>
+              <input type="text" id="bfm-drop" placeholder="e.g. Dashashwamedh Ghat, Ayodhya" required>
+            </div>
+            <div class="bfm-field">
+              <label><i class="fa-solid fa-calendar-days"></i> PICKUP DATE &amp; TIME *</label>
+              <input type="datetime-local" id="bfm-datetime" required>
+            </div>
+          </div>
+
+          <div class="bfm-field" style="margin-bottom:1.2rem;">
+            <label><i class="fa-solid fa-taxi"></i> SELECT VEHICLE *</label>
+            <select id="bfm-vehicle" required>
+              <option value="Sedan (Dzire/Etios) - Rs.899">Sedan (Dzire / Etios) - Rs.899 / Ride</option>
+              <option value="SUV (Ertiga/Carens) - Rs.1399">SUV (Ertiga / Carens) - Rs.1,399 / Ride</option>
+              <option value="Innova Crysta - Rs.1899">Innova Crysta (Luxury AC) - Rs.1,899 / Ride</option>
+              <option value="Tempo Traveller - Rs.2999">Tempo Traveller (12-17 Seater) - Rs.2,999 / Ride</option>
+            </select>
+          </div>
+
+          <div class="bfm-fields-grid">
+            <div class="bfm-field">
+              <label><i class="fa-solid fa-user"></i> YOUR NAME *</label>
+              <input type="text" id="bfm-name" placeholder="Enter full name" required>
+            </div>
+            <div class="bfm-field">
+              <label><i class="fa-solid fa-phone"></i> MOBILE NUMBER (WHATSAPP) *</label>
+              <input type="tel" id="bfm-phone" placeholder="Enter 10 digit mobile number" required>
+            </div>
+          </div>
+
+          <button type="submit" class="bfm-submit-btn">
+            <i class="fa-brands fa-whatsapp"></i> Calculate Fare &amp; Confirm Booking
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
