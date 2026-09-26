@@ -7,6 +7,7 @@
   <title>KashiHolidays</title>
   
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 
   
@@ -29,7 +30,7 @@
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#destinations" class="nav-link">Destinations</a></li>
         <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-        <li><a href="#contact" class="nav-link btn-primary">Book Now</a></li>
+        <li><a href="#online-booking" class="nav-link btn-primary">Book Now</a></li>
       </ul>
 
       
@@ -46,7 +47,287 @@
         
         <h1>Welcome To KashiHolidays</h1>
         <p>Explore handpicked luxury tours, sacred ghats & ancient temples of Banaras.</p>
-        <a href="#destinations" class="btn-primary">Explore Packages</a>
+        <a href="#online-booking" class="btn-primary">Book Taxi Now</a>
+      </div>
+    </section>
+
+    <!-- Online Taxi Booking Card Section -->
+    <section class="online-booking-section" id="online-booking">
+      <div class="booking-banner-header">
+        <h2>Book Your <span class="highlight-text">Taxi in Varanasi</span> Online</h2>
+        <p>Fill in your trip details below &amp; get instant fare estimate. No advance payment required — pay after your ride. Trusted by <strong>1,000+ happy travellers</strong> across Kashi.</p>
+        
+        <div class="banner-badges">
+          <span class="badge-pill"><i class="fa-solid fa-shield-halved"></i> No Advance</span>
+          <span class="badge-pill"><i class="fa-solid fa-bolt"></i> Instant Confirm</span>
+          <span class="badge-pill"><i class="fa-solid fa-ban"></i> Free Cancellation</span>
+          <span class="badge-pill"><i class="fa-solid fa-headset"></i> 24/7 Support</span>
+        </div>
+      </div>
+
+      <div class="booking-card-wrapper">
+        <!-- Step Indicator Bar -->
+        <div class="step-indicator-bar">
+          <div class="step-item active" id="step-btn-1">
+            <div class="step-num">1</div>
+            <span class="step-label">TRIP DETAILS</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-item" id="step-btn-2">
+            <div class="step-num">2</div>
+            <span class="step-label">VEHICLE</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-item" id="step-btn-3">
+            <div class="step-num">3</div>
+            <span class="step-label">YOUR INFO</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-item" id="step-btn-4">
+            <div class="step-num">4</div>
+            <span class="step-label">CONFIRM</span>
+          </div>
+        </div>
+
+        <!-- Form Card Body -->
+        <div class="booking-form-card">
+          <div class="card-title-row">
+            <div class="icon-circle"><i class="fa-solid fa-route"></i></div>
+            <div>
+              <h3>Trip Details</h3>
+              <p>Tell us where you're going</p>
+            </div>
+          </div>
+
+          <form id="taxi-booking-form" onsubmit="event.preventDefault(); submitTaxiBooking();">
+            
+            <!-- Service Type Selector -->
+            <div class="form-row">
+              <label class="form-label-title"><i class="fa-solid fa-list-check"></i> SERVICE TYPE</label>
+              <div class="service-type-tabs">
+                <button type="button" class="tab-btn active" data-type="One Way"><i class="fa-solid fa-arrow-right"></i> ONE WAY</button>
+                <button type="button" class="tab-btn" data-type="Round Trip"><i class="fa-solid fa-rotate"></i> ROUND TRIP</button>
+                <button type="button" class="tab-btn" data-type="Local"><i class="fa-solid fa-city"></i> LOCAL</button>
+                <button type="button" class="tab-btn" data-type="Airport"><i class="fa-solid fa-plane"></i> AIRPORT</button>
+              </div>
+            </div>
+
+            <!-- Inputs Grid -->
+            <div class="form-fields-grid">
+              <div class="input-field-group">
+                <label><i class="fa-solid fa-location-dot"></i> PICKUP LOCATION *</label>
+                <input type="text" id="pickup-location" placeholder="e.g. Varanasi Airport, Hotel Name, Railway Station" required>
+              </div>
+
+              <div class="input-field-group">
+                <label><i class="fa-solid fa-location-arrow"></i> DROP LOCATION *</label>
+                <input type="text" id="drop-location" placeholder="e.g. Dashashwamedh Ghat, Kashi Vishwanath, Ayodhya" required>
+              </div>
+
+              <div class="input-field-group">
+                <label><i class="fa-solid fa-calendar-days"></i> PICKUP DATE &amp; TIME *</label>
+                <input type="datetime-local" id="pickup-datetime" required>
+              </div>
+
+              <div class="input-field-group">
+                <label><i class="fa-solid fa-taxi"></i> SELECT VEHICLE *</label>
+                <select id="selected-vehicle" required>
+                  <option value="Sedan (Dzire/Etios) - ₹899">Sedan (Dzire / Etios) - ₹899 / Ride</option>
+                  <option value="SUV (Ertiga/Carens) - ₹1,399">SUV (Ertiga / Carens) - ₹1,399 / Ride</option>
+                  <option value="Innova Crysta - ₹1,899">Innova Crysta (Luxury AC) - ₹1,899 / Ride</option>
+                  <option value="Tempo Traveller - ₹2,999">Tempo Traveller (12-17 Seater) - ₹2,999 / Ride</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-fields-grid">
+              <div class="input-field-group">
+                <label><i class="fa-solid fa-user"></i> YOUR NAME *</label>
+                <input type="text" id="passenger-name" placeholder="Enter full name" required>
+              </div>
+
+              <div class="input-field-group">
+                <label><i class="fa-solid fa-phone"></i> MOBILE NUMBER (WHATSAPP) *</label>
+                <input type="tel" id="passenger-phone" placeholder="Enter 10 digit mobile number" required>
+              </div>
+            </div>
+
+            <div class="form-action-row">
+              <button type="submit" class="btn-submit-booking"><i class="fa-brands fa-whatsapp"></i> Calculate Fare &amp; Confirm Booking</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </section>
+    
+    <!-- Cab Service & Taxi Rates Section -->
+    <section class="cab-rates-section" id="cabs">
+      <div class="section-header">
+        <h2>Cab in Varanasi | Taxi Service in Varanasi Rates</h2>
+        <p>Affordable, reliable & AC cab rental rates for local Kashi sightseeing, airport transfers, and outstation tours.</p>
+      </div>
+
+      <div class="cab-cards-grid">
+        
+        <!-- Car Card 1: Sedan -->
+        <div class="cab-card">
+          <div class="cab-card-header">
+            <span class="cab-badge popular">Most Popular</span>
+            <div class="cab-icon-box">
+              <i class="fa-solid fa-car"></i>
+            </div>
+            <h3>Sedan (Dzire / Etios)</h3>
+            <p class="cab-capacity"><i class="fa-solid fa-users"></i> 4 Passengers &bull; AC &bull; 2 Bags</p>
+          </div>
+          
+          <div class="cab-rates-list">
+            <div class="rate-item">
+              <span>Airport Transfer</span>
+              <strong>₹899</strong>
+            </div>
+            <div class="rate-item">
+              <span>Half Day (4 hrs / 40 km)</span>
+              <strong>₹1,299</strong>
+            </div>
+            <div class="rate-item highlight">
+              <span>Full Day (8 hrs / 80 km)</span>
+              <strong>₹1,999</strong>
+            </div>
+            <div class="rate-item">
+              <span>Outstation Rate</span>
+              <strong>₹11 / km</strong>
+            </div>
+          </div>
+
+          <div class="cab-card-footer">
+            <a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20a%20Sedan%20(Dzire/Etios)%20cab" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book Sedan Cab</a>
+          </div>
+        </div>
+
+        <!-- Car Card 2: SUV Ertiga -->
+        <div class="cab-card">
+          <div class="cab-card-header">
+            <span class="cab-badge family">Family Choice</span>
+            <div class="cab-icon-box">
+              <i class="fa-solid fa-car-side"></i>
+            </div>
+            <h3>SUV (Ertiga / Carens)</h3>
+            <p class="cab-capacity"><i class="fa-solid fa-users"></i> 6 Passengers &bull; AC &bull; 3 Bags</p>
+          </div>
+          
+          <div class="cab-rates-list">
+            <div class="rate-item">
+              <span>Airport Transfer</span>
+              <strong>₹1,399</strong>
+            </div>
+            <div class="rate-item">
+              <span>Half Day (4 hrs / 40 km)</span>
+              <strong>₹1,799</strong>
+            </div>
+            <div class="rate-item highlight">
+              <span>Full Day (8 hrs / 80 km)</span>
+              <strong>₹2,699</strong>
+            </div>
+            <div class="rate-item">
+              <span>Outstation Rate</span>
+              <strong>₹14 / km</strong>
+            </div>
+          </div>
+
+          <div class="cab-card-footer">
+            <a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20an%20SUV%20(Ertiga)%20cab" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book SUV Cab</a>
+          </div>
+        </div>
+
+        <!-- Car Card 3: Innova Crysta -->
+        <div class="cab-card featured">
+          <div class="cab-card-header">
+            <span class="cab-badge luxury">Luxury Ride</span>
+            <div class="cab-icon-box">
+              <i class="fa-solid fa-van-shuttle"></i>
+            </div>
+            <h3>Innova Crysta</h3>
+            <p class="cab-capacity"><i class="fa-solid fa-users"></i> 7 Passengers &bull; Premium AC &bull; 4 Bags</p>
+          </div>
+          
+          <div class="cab-rates-list">
+            <div class="rate-item">
+              <span>Airport Transfer</span>
+              <strong>₹1,899</strong>
+            </div>
+            <div class="rate-item">
+              <span>Half Day (4 hrs / 40 km)</span>
+              <strong>₹2,499</strong>
+            </div>
+            <div class="rate-item highlight">
+              <span>Full Day (8 hrs / 80 km)</span>
+              <strong>₹3,499</strong>
+            </div>
+            <div class="rate-item">
+              <span>Outstation Rate</span>
+              <strong>₹18 / km</strong>
+            </div>
+          </div>
+
+          <div class="cab-card-footer">
+            <a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20an%20Innova%20Crysta%20cab" target="_blank" class="btn-cab-book btn-primary-book"><i class="fa-brands fa-whatsapp"></i> Book Innova Crysta</a>
+          </div>
+        </div>
+
+        <!-- Car Card 4: Tempo Traveller -->
+        <div class="cab-card">
+          <div class="cab-card-header">
+            <span class="cab-badge group">Group Tours</span>
+            <div class="cab-icon-box">
+              <i class="fa-solid fa-bus"></i>
+            </div>
+            <h3>Tempo Traveller</h3>
+            <p class="cab-capacity"><i class="fa-solid fa-users"></i> 12-17 Seater &bull; Pushback AC</p>
+          </div>
+          
+          <div class="cab-rates-list">
+            <div class="rate-item">
+              <span>Airport Transfer</span>
+              <strong>₹2,999</strong>
+            </div>
+            <div class="rate-item">
+              <span>Half Day (4 hrs / 40 km)</span>
+              <strong>₹3,999</strong>
+            </div>
+            <div class="rate-item highlight">
+              <span>Full Day (8 hrs / 80 km)</span>
+              <strong>₹5,499</strong>
+            </div>
+            <div class="rate-item">
+              <span>Outstation Rate</span>
+              <strong>₹24 / km</strong>
+            </div>
+          </div>
+
+          <div class="cab-card-footer">
+            <a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20a%20Tempo%20Traveller" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book Tempo Traveller</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cab-features-grid">
+        <div class="cab-feature-card">
+          <i class="fa-solid fa-clock"></i>
+          <h4>24/7 Availability</h4>
+          <p>Instant pickup anywhere in Varanasi & Airport.</p>
+        </div>
+        <div class="cab-feature-card">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h4>Verified Drivers</h4>
+          <p>Courteous, local & highly experienced drivers.</p>
+        </div>
+        <div class="cab-feature-card">
+          <i class="fa-solid fa-tags"></i>
+          <h4>No Hidden Charges</h4>
+          <p>Transparent pricing with toll & parking options.</p>
+        </div>
       </div>
     </section>
 
@@ -162,92 +443,26 @@
         </article>
     </section>
 
-    <!-- Cab Service & Taxi Rates Section -->
-    <section class="cab-rates-section" id="cabs">
-      <div class="section-header">
-        <h2>Cab in Varanasi | Taxi Service in Varanasi Rates</h2>
-        <p>Affordable, reliable & AC cab rental rates for local Kashi sightseeing, airport transfers, and outstation tours.</p>
-      </div>
+   
+        
+      
+          
+         
 
-      <div class="table-responsive">
-        <table class="cab-rates-table">
-          <thead>
-            <tr>
-              <th>Vehicle Type</th>
-              <th>Airport Pickup / Drop</th>
-              <th>Half Day (4 hrs / 40 km)</th>
-              <th>Full Day (8 hrs / 80 km)</th>
-              <th>Outstation Rate</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="vehicle-info">
-                  <i class="fa-solid fa-car"></i>
-                  <div>
-                    <strong>Sedan (Dzire / Etios)</strong>
-                    <span>4 Passengers | AC</span>
-                  </div>
-                </div>
-              </td>
-              <td><span class="price">₹899</span></td>
-              <td><span class="price">₹1,299</span></td>
-              <td><span class="price">₹1,999</span></td>
-              <td><span class="price">₹11 / km</span></td>
-              <td><a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20a%20Sedan%20cab" target="_blank" class="btn-sm-book"><i class="fa-brands fa-whatsapp"></i> Book Cab</a></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="vehicle-info">
-                  <i class="fa-solid fa-car-side"></i>
-                  <div>
-                    <strong>SUV (Ertiga / Carens)</strong>
-                    <span>6 Passengers | AC</span>
-                  </div>
-                </div>
-              </td>
-              <td><span class="price">₹1,399</span></td>
-              <td><span class="price">₹1,799</span></td>
-              <td><span class="price">₹2,699</span></td>
-              <td><span class="price">₹14 / km</span></td>
-              <td><a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20an%20SUV%20Ertiga%20cab" target="_blank" class="btn-sm-book"><i class="fa-brands fa-whatsapp"></i> Book Cab</a></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="vehicle-info">
-                  <i class="fa-solid fa-van-shuttle"></i>
-                  <div>
-                    <strong>Innova Crysta (Premium)</strong>
-                    <span>7 Passengers | Luxury AC</span>
-                  </div>
-                </div>
-              </td>
-              <td><span class="price">₹1,899</span></td>
-              <td><span class="price">₹2,499</span></td>
-              <td><span class="price">₹3,499</span></td>
-              <td><span class="price">₹18 / km</span></td>
-              <td><a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20an%20Innova%20Crysta%20cab" target="_blank" class="btn-sm-book"><i class="fa-brands fa-whatsapp"></i> Book Cab</a></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="vehicle-info">
-                  <i class="fa-solid fa-bus"></i>
-                  <div>
-                    <strong>Tempo Traveller</strong>
-                    <span>12 / 17 Seater | AC</span>
-                  </div>
-                </div>
-              </td>
-              <td><span class="price">₹2,999</span></td>
-              <td><span class="price">₹3,999</span></td>
-              <td><span class="price">₹5,499</span></td>
-              <td><span class="price">₹24 / km</span></td>
-              <td><a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20a%20Tempo%20Traveller" target="_blank" class="btn-sm-book"><i class="fa-brands fa-whatsapp"></i> Book Cab</a></td>
-            </tr>
-          </tbody>
-        </table>
+          
+
+          
+         
+
+         
+       
+      
+
+          <div class="cab-card-footer">
+            <a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20a%20Tempo%20Traveller" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book Tempo Traveller</a>
+          </div>
+        </div>
+
       </div>
 
       <div class="cab-features-grid">
@@ -350,6 +565,50 @@
       <p>&copy; 2026 Wanderlust Travel Agency. All rights reserved.</p>
     </div>
   </footer>
+  <!-- Instant Booking Popup Modal -->
+<div class="booking-modal-overlay" id="bookingModal" aria-hidden="true">
+  <div class="booking-modal-card">
+    
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h3><i class="fa-solid fa-bolt"></i> FOR INSTANT BOOKING</h3>
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="Close Popup">&times;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <h4 class="modal-subtitle">Varanasi's Best Taxi Service — Get Your Cab Allocated Instantly!</h4>
+
+      <!-- Phone Calling Box -->
+      <div class="contact-box call-box">
+        <span class="box-badge badge-orange"><i class="fa-solid fa-phone"></i> TAP TO PLACE CALL</span>
+        <a href="tel:+917393936793" class="phone-number text-red">+91 7393936793</a>
+        <p>Click above number to call our booking desk directly now.</p>
+        <a href="tel:+917393936793" class="modal-btn btn-orange">
+          <i class="fa-solid fa-phone"></i> CALL NOW FOR INSTANT TAXI
+        </a>
+      </div>
+
+      <!-- WhatsApp Box -->
+      <div class="contact-box whatsapp-box">
+        <span class="box-badge badge-green"><i class="fa-brands fa-whatsapp"></i> CHAT ON WHATSAPP</span>
+        <a href="https://wa.me/917393936793" target="_blank" class="phone-number text-teal">+91 7393936793 &gt;</a>
+        <p>Send a quick text message to get fare details on WhatsApp.</p>
+        <a href="https://wa.me/917393936793" target="_blank" class="modal-btn btn-green">
+          <i class="fa-brands fa-whatsapp"></i> CHAT FOR INSTANT BOOKING
+        </a>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="modal-footer">
+      <span><i class="fa-solid fa-circle-check text-blue"></i> 24/7 Booking</span>
+      <span><i class="fa-solid fa-user-check text-blue"></i> Verified Cars</span>
+      <span><i class="fa-solid fa-tag text-blue"></i> Lowest Fares</span>
+    </div>
+
+  </div>
+</div>
 
    
   <script src="script.js"></script>
