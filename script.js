@@ -110,10 +110,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // All Book Now buttons and booking triggers open the booking form modal
-  document.querySelectorAll('.btn-cab-book, .cards-grid .btn-secondary, .open-booking-trigger, #heroBookBtn, #topBookBtn').forEach(el => {
+  // Top header, hero & cab rate buttons open the booking form modal
+  document.querySelectorAll('.btn-cab-book, .open-booking-trigger, #heroBookBtn, #topBookBtn').forEach(el => {
     el.addEventListener('click', (e) => {
       openBookingForm();
+    });
+  });
+
+  // Card "Book Now" buttons open WhatsApp directly with specific package details
+  document.querySelectorAll('.cards-grid .btn-secondary').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = btn.closest('.card');
+      const title = card ? (card.querySelector('h3')?.innerText || 'Tour Package') : 'Tour Package';
+      const price = card ? (card.querySelector('.badge')?.innerText || '') : '';
+
+      const msg =
+        `*🚖 NEW BOOKING INQUIRY (KashiHolidays)*\n\n` +
+        `*Package:* ${title}\n` +
+        (price ? `*Price:* ${price}\n` : '') +
+        `\nHi KashiHolidays, I want to book the ${title} package. Please share availability & booking details!`;
+
+      window.open(`https://wa.me/918858852339?text=${encodeURIComponent(msg)}`, '_blank');
     });
   });
 
