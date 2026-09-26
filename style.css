@@ -1,6 +1,4 @@
-
 :root {
-
   --primary: #0284c7;       
   --primary-dark: #0369a1;   
   --secondary: #14b8a6;      
@@ -11,13 +9,11 @@
   --gray: #64748b;           
   --border: #e2e8f0;         
   
-  
   --font-family: 'Poppins', sans-serif;
-  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --radius: 12px;
+  --shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius: 16px;
   --transition: all 0.3s ease;
 }
-
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -35,6 +31,7 @@ body {
   color: var(--dark);
   background-color: var(--light-bg);
   line-height: 1.6;
+  padding-top: 70px;
 }
 
 a {
@@ -52,27 +49,31 @@ img {
   display: block;
 }
 
-
+/* Common Buttons */
 .btn-primary {
-  background-color: var(--secondary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: var(--white);
-  padding: 0.6rem 1.4rem;
+  padding: 0.75rem 1.6rem;
   border-radius: 50px;
-  font-weight: 500;
+  font-weight: 600;
   transition: var(--transition);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
 }
 
 .btn-primary:hover {
-  background-color: var(--secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
 }
 
 .btn-secondary {
   background-color: var(--primary);
   color: var(--white);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 500;
+  padding: 0.55rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
   font-size: 0.9rem;
   transition: var(--transition);
 }
@@ -83,7 +84,7 @@ img {
 
 .section-header {
   text-align: center;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto 3rem;
 }
 
@@ -91,78 +92,226 @@ img {
   font-size: 2.2rem;
   color: var(--dark);
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 .section-header p {
   color: var(--gray);
 }
 
-
-.header {
-  position: sticky;
+/* ==========================================================================
+   TOP HEADER BAR
+   ========================================================================== */
+.top-header {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 70px;
   background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  z-index: 1000;
-}
-
-.navbar {
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+  z-index: 1000;
 }
 
 .car {
-  width: 40px;
+  width: 38px;
   height: auto;
   object-fit: contain;
   vertical-align: middle;
 }
+
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.45rem;
+  font-weight: 800;
   color: var(--primary);
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.nav-links {
+.top-header-right {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
-.nav-link {
-  font-weight: 500;
-  color: var(--dark);
+.btn-book-now {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
   transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.nav-link:hover {
-  color: var(--primary);
+.btn-book-now:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
 }
 
 .menu-toggle {
   display: none;
-  background: none;
+  background: #f1f5f9;
   border: none;
-  font-size: 1.5rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 1.2rem;
   color: var(--dark);
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
 }
 
+.menu-toggle:hover {
+  background-color: #e2e8f0;
+}
 
+/* ==========================================================================
+   VERTICAL SIDEBAR NAVIGATION (RIGHT SIDE FLOATING MENU)
+   ========================================================================== */
+.side-navbar {
+  position: fixed;
+  top: 90px;
+  right: 25px;
+  width: 240px;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: var(--radius);
+  padding: 1.2rem 1rem;
+  z-index: 999;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.sidebar-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sidebar-close {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #64748b;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.side-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.side-nav-links .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.75rem 1rem;
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: 12px;
+  transition: var(--transition);
+  background-color: transparent;
+}
+
+.side-nav-links .nav-link i {
+  color: var(--primary);
+  width: 22px;
+  text-align: center;
+  font-size: 1.05rem;
+  transition: transform 0.2s ease;
+}
+
+.side-nav-links .nav-link:hover {
+  background-color: #f0f9ff;
+  color: var(--primary);
+  transform: translateX(-4px);
+}
+
+.side-nav-links .nav-link:hover i {
+  transform: scale(1.2);
+}
+
+/* Adjust Main & Footer layout for desktop so it doesn't overlap sidebar */
+@media (min-width: 1025px) {
+  main, footer {
+    padding-right: 280px;
+  }
+}
+
+/* Mobile & Tablet Side Menu Drawer */
+@media (max-width: 1024px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .sidebar-close {
+    display: block;
+  }
+
+  .side-navbar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 270px;
+    height: 100vh;
+    border-radius: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 1.5rem 1.2rem;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .side-navbar.active {
+    right: 0;
+  }
+
+  main, footer {
+    padding-right: 0;
+  }
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
 .hero {
   position: relative;
-  min-height: 85vh;
-  background: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.65)), 
+  min-height: 80vh;
+  background: linear-gradient(rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.7)), 
               url('assets/banaras_hero.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
@@ -170,16 +319,18 @@ img {
   text-align: center;
   color: var(--white);
   padding: 4rem 1.5rem;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .hero-content {
-  max-width: 850px;
+  max-width: 800px;
   width: 100%;
 }
 
 .hero-content h1 {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
@@ -190,73 +341,381 @@ img {
   opacity: 0.9;
 }
 
-.search-form {
-  background-color: var(--white);
-  padding: 1.2rem;
+/* ==========================================================================
+   ONLINE BOOKING FORM SECTION
+   ========================================================================== */
+.online-booking-section {
+  width: 100%;
+  margin: 3rem 0 5rem 0;
+  padding: 0 1.5rem;
+}
+
+.booking-banner-header {
+  background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)),
+              url('assets/banaras_hero.jpg') center/cover no-repeat;
+  color: #ffffff;
+  padding: 3.5rem 1.5rem 5rem;
+  text-align: center;
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.booking-banner-header h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.highlight-text {
+  color: #facc15;
+}
+
+.booking-banner-header p {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.banner-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  color: var(--dark);
-  align-items: flex-end;
+  justify-content: center;
+  gap: 0.8rem;
 }
 
-.form-group {
+.badge-pill {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.booking-card-wrapper {
+  max-width: 900px;
+  margin: -3rem auto 0;
+  padding: 0 1rem;
+}
+
+.step-indicator-bar {
+  background-color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--gray);
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.step-item.active {
+  color: var(--primary);
+}
+
+.step-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.step-item.active .step-num {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.step-line {
   flex: 1;
-  min-width: 160px;
+  height: 2px;
+  background-color: #e2e8f0;
+  margin: 0 1rem;
+}
+
+.booking-form-card {
+  background-color: #ffffff;
+  border-radius: var(--radius);
+  padding: 2.2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.icon-circle {
+  width: 48px;
+  height: 48px;
+  background-color: #e0f2fe;
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.card-title-row h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.card-title-row p {
+  font-size: 0.88rem;
+  color: var(--gray);
+}
+
+.service-type-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.8rem 0 1.5rem;
+}
+
+.tab-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background-color: #f8fafc;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.form-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.input-field-group {
   display: flex;
   flex-direction: column;
-  text-align: left;
 }
 
-.form-group label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--gray);
+.input-field-group label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #475569;
   margin-bottom: 0.4rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
 
-.form-group input, 
-.form-group select {
+.input-field-group input,
+.input-field-group select {
   width: 100%;
-  padding: 0.65rem 0.8rem;
+  padding: 0.8rem 1rem;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 10px;
+  font-size: 0.92rem;
   font-family: inherit;
-  font-size: 0.95rem;
   outline: none;
+  background-color: #f8fafc;
+  color: var(--dark);
+  transition: var(--transition);
 }
 
-.form-group input:focus, 
-.form-group select:focus {
+.input-field-group input:focus,
+.input-field-group select:focus {
+  border-color: var(--primary);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.btn-submit-booking {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  box-shadow: 0 8px 15px -3px rgba(2, 132, 199, 0.35);
+  transition: var(--transition);
+  margin-top: 1.5rem;
+}
+
+.btn-submit-booking:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -3px rgba(2, 132, 199, 0.45);
+}
+
+/* ==========================================================================
+   CAB & TAXI RATES CARDS SECTION
+   ========================================================================== */
+.cab-rates-section {
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 0 1.5rem;
+}
+
+.cab-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.8rem;
+  margin-bottom: 3rem;
+}
+
+.cab-card {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
+  padding: 1.8rem 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition);
+}
+
+.cab-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
   border-color: var(--primary);
 }
 
-.btn-search {
-  background-color: var(--primary);
-  color: var(--white);
-  border: none;
-  padding: 0.75rem 1.8rem;
-  border-radius: 6px;
-  font-family: inherit;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
+.cab-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cab-badge.popular { background-color: #e0f2fe; color: #0284c7; }
+.cab-badge.family { background-color: #f0fdf4; color: #16a34a; }
+.cab-badge.luxury { background-color: #fef3c7; color: #d97706; }
+.cab-badge.group { background-color: #f3e8ff; color: #9333ea; }
+
+.cab-icon-box {
+  width: 56px;
+  height: 56px;
+  background-color: #f1f5f9;
+  color: var(--primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.cab-card-header h3 {
+  font-size: 1.2rem;
+  color: var(--dark);
+  margin-bottom: 0.3rem;
+}
+
+.cab-capacity {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 1.2rem;
+}
+
+.cab-rates-list {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.rate-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  color: var(--gray);
+}
+
+.rate-item strong {
+  color: var(--dark);
+}
+
+.rate-item.highlight strong {
+  color: #0d9488;
+  font-weight: 700;
+}
+
+.btn-cab-book {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #25D366;
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: var(--transition);
 }
 
-.btn-search:hover {
-  background-color: var(--primary-dark);
+.btn-cab-book:hover {
+  background-color: #1eb954;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
-
+/* ==========================================================================
+   SERVICES & PACKAGES GRID
+   ========================================================================== */
 .destinations {
   max-width: 1200px;
   margin: 5rem auto;
@@ -265,7 +724,7 @@ img {
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
@@ -275,6 +734,7 @@ img {
   overflow: hidden;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   transition: var(--transition);
+  border: 1px solid var(--border);
 }
 
 .card:hover {
@@ -284,7 +744,7 @@ img {
 
 .card-img-container {
   position: relative;
-  height: 220px;
+  height: 200px;
 }
 
 .card-img-container img {
@@ -301,8 +761,8 @@ img {
   color: var(--white);
   padding: 0.3rem 0.8rem;
   border-radius: 50px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
 .card-body {
@@ -310,19 +770,19 @@ img {
 }
 
 .location {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--secondary-dark);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .card-body h3 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin: 0.3rem 0 0.5rem;
 }
 
 .card-body p {
   color: var(--gray);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   margin-bottom: 1.2rem;
 }
 
@@ -336,11 +796,13 @@ img {
 
 .rating {
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #f59e0b;
 }
 
-
+/* ==========================================================================
+   TESTIMONIALS SECTION
+   ========================================================================== */
 .testimonials {
   background-color: var(--white);
   padding: 5rem 1.5rem;
@@ -372,23 +834,13 @@ img {
 .testimonial-card p {
   font-style: italic;
   color: var(--dark);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   margin-bottom: 1.2rem;
 }
 
-.client-info strong {
-  display: block;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.client-info span {
-  font-size: 0.8rem;
-  color: var(--gray);
-  font-style: normal;
-}
-
-
+/* ==========================================================================
+   FOOTER SECTION
+   ========================================================================== */
 .footer {
   background-color: var(--dark);
   color: var(--white);
@@ -399,24 +851,15 @@ img {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 3rem;
   margin-bottom: 3rem;
-}
-
-.text-white {
-  color: var(--white);
-}
-
-.footer-about p {
-  color: var(--gray);
-  margin: 1rem 0 1.5rem;
-  font-size: 0.9rem;
 }
 
 .social-links {
   display: flex;
   gap: 1rem;
+  margin-top: 1.2rem;
 }
 
 .social-links a {
@@ -432,44 +875,19 @@ img {
   transition: var(--transition);
 }
 
-.social-links a.insta:hover {
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  color: #ffffff;
+.social-links a:hover {
+  background-color: var(--primary);
   transform: translateY(-3px);
 }
 
-.social-links a.whatsapp:hover {
-  background-color: #25D366;
-  color: #ffffff;
-  transform: translateY(-3px);
-}
-
-.social-links a.phone:hover {
-  background-color: #0284c7;
-  color: #ffffff;
-  transform: translateY(-3px);
-}
-
-.footer-links h4, 
-.footer-contact h4 {
+.footer-links h4, .footer-contact h4 {
   font-size: 1.1rem;
   margin-bottom: 1.2rem;
-  position: relative;
 }
 
-.footer-links ul li {
-  margin-bottom: 0.6rem;
-}
-
-.footer-links a {
-  color: var(--gray);
-  font-size: 0.9rem;
-  transition: var(--transition);
-}
-
-.footer-links a:hover {
-  color: var(--white);
-}
+.footer-links ul li { margin-bottom: 0.6rem; }
+.footer-links a { color: var(--gray); font-size: 0.9rem; transition: var(--transition); }
+.footer-links a:hover { color: var(--white); }
 
 .footer-contact p {
   color: var(--gray);
@@ -488,612 +906,8 @@ img {
   font-size: 0.85rem;
 }
 
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--white);
-    flex-direction: column;
-    padding: 1.5rem 0;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
-    gap: 1.2rem;
-    display: none; 
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
-
-  .search-form {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn-search {
-    width: 100%;
-  }
-}
-
-/* ─── Varanasi Ghat Image Banner ─── */
-.footer-ghat {
-  position: relative;
-  width: 100%;
-  height: 320px;
-  overflow: hidden;
-  margin-top: 2.5rem;
-}
-
-.ghat-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 60%;
-  transition: transform 0.6s ease;
-}
-
-.footer-ghat:hover .ghat-img {
-  transform: scale(1.05);
-}
-
-.ghat-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.25) 60%, transparent 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 2.5rem;
-  text-align: center;
-  color: #fff;
-}
-
-.ghat-overlay h3 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.4rem;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-}
-
-.ghat-overlay h3 i {
-  color: #f97316;
-  margin-right: 0.5rem;
-}
-
-.ghat-overlay p {
-  font-size: 1rem;
-  opacity: 0.9;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-}
-
-@media (max-width: 768px) {
-  .footer-ghat {
-    height: 200px;
-  }
-
-  .ghat-overlay h3 {
-    font-size: 1.2rem;
-  }
-}
-
-/* ─── Cab & Taxi Rates Section ─── */
-.cab-rates-section {
-  max-width: 1200px;
-  margin: 5rem auto;
-  padding: 0 1.5rem;
-}
-
-.cab-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.8rem;
-  margin-bottom: 3rem;
-}
-
-.cab-card {
-  background-color: var(--white);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--border);
-  padding: 1.8rem 1.5rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: var(--transition);
-}
-
-.cab-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow);
-  border-color: var(--primary);
-}
-
-.cab-card.featured {
-  border: 2px solid var(--primary);
-  box-shadow: 0 10px 20px -3px rgba(2, 132, 199, 0.15);
-}
-
-.cab-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.25rem 0.7rem;
-  border-radius: 50px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.cab-badge.popular {
-  background-color: #e0f2fe;
-  color: #0284c7;
-}
-
-.cab-badge.family {
-  background-color: #f0fdf4;
-  color: #16a34a;
-}
-
-.cab-badge.luxury {
-  background-color: #fef3c7;
-  color: #d97706;
-}
-
-.cab-badge.group {
-  background-color: #f3e8ff;
-  color: #9333ea;
-}
-
-.cab-icon-box {
-  width: 60px;
-  height: 60px;
-  background-color: #f1f5f9;
-  color: var(--primary);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.cab-card-header h3 {
-  font-size: 1.25rem;
-  color: var(--dark);
-  margin-bottom: 0.3rem;
-}
-
-.cab-capacity {
-  font-size: 0.85rem;
-  color: var(--gray);
-  margin-bottom: 1.2rem;
-}
-
-.cab-rates-list {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 0;
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.rate-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.88rem;
-  color: var(--gray);
-}
-
-.rate-item strong {
-  color: var(--dark);
-  font-size: 0.95rem;
-}
-
-.rate-item.highlight strong {
-  color: #0d9488;
-  font-weight: 700;
-  font-size: 1.05rem;
-}
-
-.btn-cab-book {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #25D366;
-  color: #ffffff;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: var(--transition);
-}
-
-.btn-cab-book:hover {
-  background-color: #1eb954;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-}
-
-.btn-primary-book {
-  background-color: var(--primary);
-}
-
-.btn-primary-book:hover {
-  background-color: var(--primary-dark);
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
-}
-
-.cab-features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-.cab-feature-card {
-  background-color: var(--white);
-  padding: 1.8rem;
-  border-radius: var(--radius);
-  text-align: center;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--border);
-  transition: var(--transition);
-}
-
-.cab-feature-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--primary);
-}
-
-.cab-feature-card i {
-  font-size: 2rem;
-  color: var(--primary);
-  margin-bottom: 0.8rem;
-}
-
-.cab-feature-card h4 {
-  font-size: 1.1rem;
-  color: var(--dark);
-  margin-bottom: 0.4rem;
-}
-
-.cab-feature-card p {
-  font-size: 0.9rem;
-  color: var(--gray);
-}
-
-/* ─── Online Taxi Booking Card Section (Match Reference Design) ─── */
-.online-booking-section {
-  width: 100%;
-  margin: 0 0 5rem 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-}
-
-.booking-banner-header {
-  background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)),
-              url('assets/banaras_hero.jpg') center/cover no-repeat;
-  color: #ffffff;
-  padding: 4rem 1.5rem 6rem;
-  text-align: center;
-}
-
-.booking-banner-header h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-  color: #ffffff;
-}
-
-.highlight-text {
-  color: #f59e0b;
-}
-
-.booking-banner-header p {
-  font-size: 1.1rem;
-  max-width: 750px;
-  margin: 0 auto 2rem;
-  opacity: 0.95;
-  line-height: 1.6;
-}
-
-.banner-badges {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.badge-pill {
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  padding: 0.5rem 1.2rem;
-  border-radius: 50px;
-  font-size: 0.88rem;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.badge-pill i {
-  color: #f59e0b;
-}
-
-.booking-card-wrapper {
-  max-width: 1000px;
-  margin: -4rem auto 0;
-  padding: 0 1.5rem;
-  position: relative;
-  z-index: 10;
-}
-
-/* Step Indicator Bar */
-.step-indicator-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  padding: 1.5rem 2rem;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.step-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  position: relative;
-  z-index: 2;
-}
-
-.step-num {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background-color: #f1f5f9;
-  color: #94a3b8;
-  font-weight: 700;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #e2e8f0;
-  transition: var(--transition);
-}
-
-.step-item.active .step-num {
-  background-color: #f59e0b;
-  color: #ffffff;
-  border-color: #f59e0b;
-  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
-}
-
-.step-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #94a3b8;
-  letter-spacing: 0.5px;
-}
-
-.step-item.active .step-label {
-  color: #d97706;
-}
-
-.step-line {
-  flex: 1;
-  max-width: 100px;
-  height: 4px;
-  background-color: #e2e8f0;
-  margin: -1.2rem 1rem 0;
-  border-radius: 4px;
-}
-
-/* Booking Form Card */
-.booking-form-card {
-  background-color: #ffffff;
-  padding: 2.5rem;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.card-title-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.icon-circle {
-  width: 50px;
-  height: 50px;
-  background-color: #fef3c7;
-  color: #d97706;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-}
-
-.card-title-row h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.card-title-row p {
-  font-size: 0.9rem;
-  color: #64748b;
-}
-
-.form-label-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #64748b;
-  margin-bottom: 0.8rem;
-  letter-spacing: 0.5px;
-}
-
-/* Service Type Tabs */
-.service-type-tabs {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-}
-
-.tab-btn {
-  padding: 0.75rem 1.4rem;
-  border-radius: 10px;
-  border: 1px solid #cbd5e1;
-  background-color: #f8fafc;
-  color: #475569;
-  font-weight: 600;
-  font-size: 0.88rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: var(--transition);
-  font-family: inherit;
-}
-
-.tab-btn:hover {
-  background-color: #f1f5f9;
-  border-color: #94a3b8;
-}
-
-.tab-btn.active {
-  background-color: #fef9c3;
-  color: #a16207;
-  border: 2px solid #eab308;
-  box-shadow: 0 4px 6px -1px rgba(234, 179, 8, 0.2);
-}
-
-/* Form Fields Grid */
-.form-fields-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
-.input-field-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-field-group label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #475569;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.input-field-group label i {
-  color: #d97706;
-}
-
-.input-field-group input,
-.input-field-group select {
-  width: 100%;
-  padding: 0.85rem 1rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  font-family: inherit;
-  outline: none;
-  background-color: #f8fafc;
-  color: #0f172a;
-  transition: var(--transition);
-}
-
-.input-field-group input:focus,
-.input-field-group select:focus {
-  border-color: #eab308;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.2);
-}
-
-.form-action-row {
-  margin-top: 2rem;
-}
-
-.btn-submit-booking {
-  width: 100%;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
-  color: #ffffff;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  font-family: inherit;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
-  box-shadow: 0 10px 15px -3px rgba(234, 179, 8, 0.35);
-  transition: var(--transition);
-}
-
-.btn-submit-booking:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 20px -3px rgba(234, 179, 8, 0.45);
-}
-
-@media (max-width: 768px) {
-  .booking-banner-header h2 {
-    font-size: 1.8rem;
-  }
-  .step-label {
-    display: none;
-  }
-  .step-num {
-    width: 32px;
-    height: 32px;
-    font-size: 0.9rem;
-  }
-  .booking-form-card {
-    padding: 1.5rem;
-  }
-}
 /* ==========================================================================
-   INSTANT BOOKING MODAL STYLES
+   INSTANT BOOKING MODAL STYLES (MATCH REFERENCE SCREENSHOT)
    ========================================================================== */
 .booking-modal-overlay {
   position: fixed;
@@ -1101,7 +915,8 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 23, 42, 0.7);
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1123,7 +938,7 @@ img {
   max-width: 440px;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.3);
   transform: translateY(20px);
   transition: transform 0.3s ease;
 }
@@ -1152,7 +967,7 @@ img {
 }
 
 .modal-close-btn {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   border: none;
   color: #ffffff;
   width: 32px;
@@ -1166,9 +981,13 @@ img {
   line-height: 1;
 }
 
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
 /* Modal Body */
 .modal-body {
-  padding: 1.2rem;
+  padding: 1.4rem 1.2rem 1.2rem;
   text-align: center;
 }
 
@@ -1176,16 +995,15 @@ img {
   font-size: 0.95rem;
   color: #1e293b;
   font-weight: 700;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
   line-height: 1.4;
 }
 
-/* Contact Boxes */
 .contact-box {
   position: relative;
   border-radius: 14px;
-  padding: 1.2rem 1rem 1rem;
-  margin-bottom: 1.2rem;
+  padding: 1.3rem 1rem 1rem;
+  margin-bottom: 1.4rem;
   text-align: center;
 }
 
@@ -1235,9 +1053,12 @@ img {
 }
 
 .modal-btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.78rem;
   border-radius: 10px;
   font-weight: 800;
   font-size: 0.9rem;
@@ -1249,8 +1070,7 @@ img {
 
 .btn-orange { background-color: #ff9800; }
 .btn-green { background-color: #25d366; }
-
-.modal-btn:hover { opacity: 0.9; }
+.modal-btn:hover { opacity: 0.92; }
 
 /* Modal Footer */
 .modal-footer {
@@ -1259,7 +1079,7 @@ img {
   display: flex;
   justify-content: space-around;
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #334155;
 }
 

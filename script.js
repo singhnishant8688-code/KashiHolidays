@@ -1,18 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
+  const sideNavbar = document.getElementById('side-navbar');
+  const sideCloseBtn = document.getElementById('sideCloseBtn');
+  const topBookBtn = document.getElementById('topBookBtn');
 
-  // Mobile menu toggle
-  if (menuToggle && navLinks) {
+  // 1. Mobile Menu Toggle for Vertical Side Navbar
+  if (menuToggle && sideNavbar) {
     menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      const isExpanded = navLinks.classList.contains('active');
-      menuToggle.setAttribute('aria-expanded', isExpanded);
+      sideNavbar.classList.toggle('active');
     });
   }
 
-  // Smooth scroll
+  if (sideCloseBtn && sideNavbar) {
+    sideCloseBtn.addEventListener('click', () => {
+      sideNavbar.classList.remove('active');
+    });
+  }
+
+  // 2. Smooth Scroll for Anchor Links
   const links = document.querySelectorAll('a[href^="#"]');
   links.forEach(link => {
     link.addEventListener('click', (event) => {
@@ -27,15 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
           block: 'start'
         });
 
-        if (navLinks && navLinks.classList.contains('active')) {
-          navLinks.classList.remove('active');
-          if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+        if (sideNavbar && sideNavbar.classList.contains('active')) {
+          sideNavbar.classList.remove('active');
         }
       }
     });
   });
 
-  // Modal Setup
+  // 3. Instant Booking Modal Setup
   const bookingModal = document.getElementById('bookingModal');
   const closeModalBtn = document.getElementById('closeModalBtn');
 
@@ -53,7 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Service Type Tabs interactivity (triggers modal popup when changing destination/tab)
+  // Open modal on top header "Book Now" button click
+  if (topBookBtn) {
+    topBookBtn.addEventListener('click', openModal);
+  }
+
+  // Service Type Tabs interactivity (triggers modal popup when changing tab)
   const tabBtns = document.querySelectorAll('.service-type-tabs .tab-btn');
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -63,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Open modal when user clicks ANY navigation menu item (Destinations, Home, Book Now), footer links, or package buttons
+  // Open modal when user clicks ANY navigation menu item (Home, Car Booking, Travel Booking, Hotel Booking, etc.)
   const triggerElements = document.querySelectorAll(
     '.nav-link, .footer-links a, .cards-grid .btn-secondary, .btn-cab-book, .btn-primary'
   );
@@ -113,7 +123,7 @@ function submitTaxiBooking() {
               `Please calculate my fare & confirm booking!`;
 
   const encodedMsg = encodeURIComponent(msg);
-  const whatsappUrl = `https://wa.me/917393936793?text=${encodedMsg}`;
+  const whatsappUrl = `https://wa.me/8858852339?text=${encodedMsg}`;
   
   window.open(whatsappUrl, '_blank');
 }

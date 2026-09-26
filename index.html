@@ -19,26 +19,41 @@
 <body>
 
 
-  <header class="header">
-    <nav class="navbar" aria-label="Main Navigation">
-      <a href="#" class="logo">
-           <img  class="car" src="assets/car.png">
-        <i class="fa-solid fa-plane-departure"></i>KashiHolidays
-      </a>
+  <!-- Top Header Bar with Logo and Book Now Button -->
+  <header class="top-header">
+    <a href="#" class="logo">
+      <img class="car" src="assets/car.png" alt="KashiHolidays Logo">
+      <i class="fa-solid fa-plane-departure"></i> KashiHolidays
+    </a>
 
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#destinations" class="nav-link">Destinations</a></li>
-        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-        <li><a href="#online-booking" class="nav-link btn-primary">Book Now</a></li>
-      </ul>
+    <div class="top-header-right">
+      <button class="btn-book-now" id="topBookBtn">
+        <i class="fa-solid fa-bolt"></i> Book Now
+      </button>
 
-      
+      <!-- Mobile Menu Toggle Button -->
       <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
         <i class="fa-solid fa-bars"></i>
       </button>
-    </nav>
+    </div>
   </header>
+
+  <!-- Fixed Vertical Side Navigation Menu (Right Side) -->
+  <nav class="side-navbar" id="side-navbar" aria-label="Side Navigation">
+    <div class="sidebar-header">
+      <div class="sidebar-title"><i class="fa-solid fa-compass"></i> Menu</div>
+      <button class="sidebar-close" id="sideCloseBtn" aria-label="Close Side Menu">&times;</button>
+    </div>
+    <ul class="side-nav-links" id="nav-links">
+      <li><a href="#home" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="#cabs" class="nav-link"><i class="fa-solid fa-car"></i> Car Booking</a></li>
+      <li><a href="#online-booking" class="nav-link"><i class="fa-solid fa-route"></i> Travel Booking</a></li>
+      <li><a href="#destinations" class="nav-link"><i class="fa-solid fa-hotel"></i> Hotel Booking</a></li>
+      <li><a href="#destinations" class="nav-link"><i class="fa-solid fa-ship"></i> Boat Booking</a></li>
+      <li><a href="#testimonials" class="nav-link"><i class="fa-solid fa-user-check"></i> Review My Profile</a></li>
+      <li><a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+    </ul>
+  </nav>
 
   <main>
 
