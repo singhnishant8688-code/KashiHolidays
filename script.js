@@ -3,22 +3,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('menu-toggle');
   const sideNavbar = document.getElementById('side-navbar');
   const sideCloseBtn = document.getElementById('sideCloseBtn');
+  const drawerOverlay = document.getElementById('drawerOverlay');
   const topBookBtn = document.getElementById('topBookBtn');
 
-  // 1. Mobile Menu Toggle for Vertical Side Navbar
-  if (menuToggle && sideNavbar) {
-    menuToggle.addEventListener('click', () => {
-      sideNavbar.classList.toggle('active');
-    });
+  // Open Side Drawer (Mobile/Tablet)
+  function openDrawer() {
+    if (sideNavbar) sideNavbar.classList.add('active');
+    if (drawerOverlay) drawerOverlay.classList.add('active');
   }
 
-  if (sideCloseBtn && sideNavbar) {
-    sideCloseBtn.addEventListener('click', () => {
-      sideNavbar.classList.remove('active');
-    });
+  // Close Side Drawer (Mobile/Tablet)
+  function closeDrawer() {
+    if (window.innerWidth <= 992) {
+      if (sideNavbar) sideNavbar.classList.remove('active');
+      if (drawerOverlay) drawerOverlay.classList.remove('active');
+    }
   }
 
-  // 2. Smooth Scroll for Anchor Links
+  if (menuToggle) {
+    menuToggle.addEventListener('click', openDrawer);
+  }
+
+  if (sideCloseBtn) {
+    sideCloseBtn.addEventListener('click', closeDrawer);
+  }
+
+  if (drawerOverlay) {
+    drawerOverlay.addEventListener('click', closeDrawer);
+  }
+
+  // Smooth Scroll for Anchor Links
   const links = document.querySelectorAll('a[href^="#"]');
   links.forEach(link => {
     link.addEventListener('click', (event) => {
@@ -33,14 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
           block: 'start'
         });
 
-        if (sideNavbar && sideNavbar.classList.contains('active')) {
-          sideNavbar.classList.remove('active');
-        }
+        closeDrawer();
       }
     });
   });
 
-  // 3. Instant Booking Modal Setup
+  // Instant Booking Modal Setup
   const bookingModal = document.getElementById('bookingModal');
   const closeModalBtn = document.getElementById('closeModalBtn');
 
@@ -73,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Open modal when user clicks ANY navigation menu item (Home, Car Booking, Travel Booking, Hotel Booking, etc.)
+  // Open modal when user clicks ANY navigation link (Home, Car Booking, Travel Booking, Hotel Booking, etc.)
   const triggerElements = document.querySelectorAll(
     '.nav-link, .footer-links a, .cards-grid .btn-secondary, .btn-cab-book, .btn-primary'
   );

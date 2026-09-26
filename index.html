@@ -19,40 +19,116 @@
 <body>
 
 
-  <!-- Top Header Bar with Logo and Book Now Button -->
-  <header class="top-header">
-    <a href="#" class="logo">
-      <img class="car" src="assets/car.png" alt="KashiHolidays Logo">
-      <i class="fa-solid fa-plane-departure"></i> KashiHolidays
-    </a>
+  <!-- Dark Background Overlay for Side Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
 
-    <div class="top-header-right">
-      <button class="btn-book-now" id="topBookBtn">
-        <i class="fa-solid fa-bolt"></i> Book Now
+  <!-- Top Header Bar -->
+  <header class="top-header">
+    <div class="top-header-left">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open Menu">
+        <i class="fa-solid fa-bars"></i>
+        <span>All</span>
       </button>
 
-      <!-- Mobile Menu Toggle Button -->
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
-        <i class="fa-solid fa-bars"></i>
+      <a href="#" class="logo">
+        <img class="car" src="assets/car.png" alt="KashiHolidays Logo">
+        <i class="fa-solid fa-plane-departure"></i> KashiHolidays
+      </a>
+    </div>
+
+    <div class="top-header-right">
+      <a href="tel:+918858852339" class="top-phone-btn"><i class="fa-solid fa-phone"></i> +91 8858852339</a>
+      <button class="btn-book-now" id="topBookBtn">
+        <i class="fa-solid fa-bolt"></i> Book Now
       </button>
     </div>
   </header>
 
-  <!-- Fixed Vertical Side Navigation Menu (Right Side) -->
-  <nav class="side-navbar" id="side-navbar" aria-label="Side Navigation">
-    <div class="sidebar-header">
-      <div class="sidebar-title"><i class="fa-solid fa-compass"></i> Menu</div>
+  <!-- Amazon-Style Left Side Navigation Drawer -->
+  <nav class="side-navbar" id="side-navbar" aria-label="Side Navigation Drawer">
+    <!-- User Sign-in Header Banner -->
+    <div class="drawer-user-header">
+      <div class="user-info">
+        <i class="fa-solid fa-circle-user"></i>
+        <span>Hello, Traveler</span>
+      </div>
       <button class="sidebar-close" id="sideCloseBtn" aria-label="Close Side Menu">&times;</button>
     </div>
-    <ul class="side-nav-links" id="nav-links">
-      <li><a href="#home" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
-      <li><a href="#cabs" class="nav-link"><i class="fa-solid fa-car"></i> Car Booking</a></li>
-      <li><a href="#online-booking" class="nav-link"><i class="fa-solid fa-route"></i> Travel Booking</a></li>
-      <li><a href="#destinations" class="nav-link"><i class="fa-solid fa-hotel"></i> Hotel Booking</a></li>
-      <li><a href="#destinations" class="nav-link"><i class="fa-solid fa-ship"></i> Boat Booking</a></li>
-      <li><a href="#testimonials" class="nav-link"><i class="fa-solid fa-user-check"></i> Review My Profile</a></li>
-      <li><a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
-    </ul>
+
+    <!-- Drawer Menu Categories & Links -->
+    <div class="drawer-content">
+      
+      <div class="drawer-section">
+        <div class="drawer-section-title">Trending Services</div>
+        <ul class="side-nav-links">
+          <li>
+            <a href="#home" class="nav-link">
+              <span><i class="fa-solid fa-house"></i> Home</span>
+              <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#cabs" class="nav-link">
+              <span><i class="fa-solid fa-car"></i> Car Booking</span>
+              <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#online-booking" class="nav-link">
+              <span><i class="fa-solid fa-route"></i> Travel Booking</span>
+              <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="drawer-divider"></div>
+
+      <div class="drawer-section">
+        <div class="drawer-section-title">Stays & Experiences</div>
+        <ul class="side-nav-links">
+          <li>
+            <a href="#destinations" class="nav-link">
+              <span><i class="fa-solid fa-hotel"></i> Hotel Booking</span>
+              <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#destinations" class="nav-link">
+              <span><i class="fa-solid fa-ship"></i> Boat Booking</span>
+              <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#destinations" class="nav-link">
+              <span><i class="fa-solid fa-gopuram"></i> Temple &amp; Darshan Tours</span>
+              <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="drawer-divider"></div>
+
+      <div class="drawer-section">
+        <div class="drawer-section-title">Account &amp; Support</div>
+        <ul class="side-nav-links">
+          <li>
+            <a href="#testimonials" class="nav-link">
+              <span><i class="fa-solid fa-user-check"></i> Review My Profile</span>
+              <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="nav-link">
+              <span><i class="fa-solid fa-envelope"></i> Contact Us</span>
+              <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
   </nav>
 
   <main>
@@ -456,50 +532,30 @@
             </div>
           </div>
         </article>
+      </div>
     </section>
 
-   
-        
-      
-          
-         
-
-          
-
-          
-         
-
-         
-       
-      
-
-          <div class="cab-card-footer">
-            <a href="https://wa.me/916392000000?text=Hi%20KashiHolidays,%20I%20want%20to%20book%20a%20Tempo%20Traveller" target="_blank" class="btn-cab-book"><i class="fa-brands fa-whatsapp"></i> Book Tempo Traveller</a>
-          </div>
-        </div>
-
-      </div>
-
+    <!-- Cab Features Grid (Horizontal Row) -->
+    <div class="cab-features-section">
       <div class="cab-features-grid">
         <div class="cab-feature-card">
           <i class="fa-solid fa-clock"></i>
           <h4>24/7 Availability</h4>
-          <p>Instant pickup anywhere in Varanasi & Airport.</p>
+          <p>Instant pickup anywhere in Varanasi &amp; Airport.</p>
         </div>
         <div class="cab-feature-card">
           <i class="fa-solid fa-shield-halved"></i>
           <h4>Verified Drivers</h4>
-          <p>Courteous, local & highly experienced drivers.</p>
+          <p>Courteous, local &amp; highly experienced drivers.</p>
         </div>
         <div class="cab-feature-card">
           <i class="fa-solid fa-tags"></i>
           <h4>No Hidden Charges</h4>
-          <p>Transparent pricing with toll & parking options.</p>
+          <p>Transparent pricing with toll &amp; parking options.</p>
         </div>
       </div>
-    </section>
+    </div>
 
-    
     <section class="testimonials" id="testimonials">
       <div class="section-header">
         <h2>What Our Travelers Say</h2>
@@ -568,13 +624,6 @@
     </div>
 
     <!-- Varanasi Ghat Image Banner -->
-    <div class="footer-ghat">
-      <img src="assets/varanasi_ghat.jpg" alt="Varanasi Ghats at Sunset" class="ghat-img">
-      <div class="ghat-overlay">
-        <h3><i class="fa-solid fa-om"></i> The Sacred Ghats of Varanasi</h3>
-        <p>Experience the divine soul of Kashi — where the Ganges meets eternity.</p>
-      </div>
-    </div>
 
     <div class="footer-bottom">
       <p>&copy; 2026 Wanderlust Travel Agency. All rights reserved.</p>
