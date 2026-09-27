@@ -1349,12 +1349,14 @@ main, footer {
 }
 
 .booking-form-modal-card {
-  background: #ffffff;
+  background: #0f172a;
+  color: #f8fafc;
   width: 100%;
   max-width: 720px;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 30px 50px -10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   transform: translateY(30px) scale(0.97);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   max-height: 90vh;
@@ -1367,12 +1369,13 @@ main, footer {
 
 /* Header */
 .bfm-header {
-  background: linear-gradient(135deg, #1e40af 0%, #0284c7 100%);
+  background: linear-gradient(135deg, #0b1329 0%, #1e293b 100%);
   color: #ffffff;
   padding: 1.2rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid rgba(2, 132, 199, 0.3);
 }
 
 .bfm-header-left {
@@ -1384,30 +1387,34 @@ main, footer {
 .bfm-logo-icon {
   width: 48px;
   height: 48px;
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(2, 132, 199, 0.2);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
+  box-shadow: 0 0 15px rgba(2, 132, 199, 0.3);
 }
 
 .bfm-header h3 {
   font-size: 1.2rem;
   font-weight: 800;
+  color: #f8fafc;
   margin: 0;
 }
 
 .bfm-header p {
   font-size: 0.82rem;
-  opacity: 0.85;
+  color: #94a3b8;
   margin: 0;
 }
 
 .bfm-close {
-  background: rgba(255,255,255,0.2);
-  border: none;
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -1417,65 +1424,20 @@ main, footer {
   align-items: center;
   justify-content: center;
   line-height: 1;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
 }
 
 .bfm-close:hover {
-  background: rgba(255,255,255,0.35);
-}
-
-/* Step Bar */
-.bfm-step-bar {
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 1rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.bfm-step {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #94a3b8;
-}
-
-.bfm-step.active {
-  color: #0284c7;
-}
-
-.bfm-step-num {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #e2e8f0;
-  color: #64748b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 0.85rem;
-  flex-shrink: 0;
-}
-
-.bfm-step.active .bfm-step-num {
-  background: #0284c7;
+  background: rgba(239, 68, 68, 0.85);
+  border-color: #ef4444;
   color: #ffffff;
-}
-
-.bfm-step-line {
-  flex: 1;
-  height: 2px;
-  background: #e2e8f0;
-  margin: 0 0.6rem;
+  transform: scale(1.08);
 }
 
 /* Body */
 .bfm-body {
   padding: 1.6rem 1.8rem;
+  background-color: #0f172a;
 }
 
 .bfm-section-title {
@@ -1484,39 +1446,41 @@ main, footer {
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .bfm-icon-circle {
   width: 46px;
   height: 46px;
-  background: #e0f2fe;
-  color: #0284c7;
+  background: rgba(14, 165, 233, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
   flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.2);
 }
 
 .bfm-section-title h4 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #f8fafc;
   margin: 0;
 }
 
 .bfm-section-title p {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #94a3b8;
   margin: 0;
 }
 
 .bfm-label {
   font-size: 0.78rem;
   font-weight: 800;
-  color: #475569;
+  color: #38bdf8;
   margin-bottom: 0.5rem;
   letter-spacing: 0.5px;
 }
@@ -1531,9 +1495,9 @@ main, footer {
 .bfm-tab {
   padding: 0.55rem 1rem;
   border-radius: 8px;
-  border: 1.5px solid #e2e8f0;
-  background: #f8fafc;
-  color: #334155;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  background: #1e293b;
+  color: #cbd5e1;
   font-weight: 700;
   font-size: 0.82rem;
   cursor: pointer;
@@ -1544,11 +1508,17 @@ main, footer {
   font-family: inherit;
 }
 
-.bfm-tab.active,
 .bfm-tab:hover {
-  background: #0284c7;
+  border-color: #38bdf8;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.bfm-tab.active {
+  background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
   color: #ffffff;
-  border-color: #0284c7;
+  border-color: #38bdf8;
+  box-shadow: 0 0 15px rgba(2, 132, 199, 0.45);
 }
 
 .bfm-fields-grid {
@@ -1566,7 +1536,7 @@ main, footer {
 .bfm-field label {
   font-size: 0.75rem;
   font-weight: 800;
-  color: #475569;
+  color: #38bdf8;
   margin-bottom: 0.4rem;
   display: flex;
   align-items: center;
@@ -1577,27 +1547,32 @@ main, footer {
 .bfm-field input,
 .bfm-field select {
   padding: 0.75rem 0.9rem;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
   border-radius: 10px;
   font-size: 0.9rem;
   font-family: inherit;
   outline: none;
-  background: #f8fafc;
-  color: #0f172a;
+  background: #1e293b;
+  color: #f8fafc;
   transition: all 0.2s ease;
+}
+
+.bfm-field select option {
+  background: #1e293b;
+  color: #f8fafc;
 }
 
 .bfm-field input:focus,
 .bfm-field select:focus {
-  border-color: #0284c7;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+  border-color: #38bdf8;
+  background: #0f172a;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
 }
 
 .bfm-submit-btn {
   width: 100%;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
   color: #ffffff;
   border: none;
   border-radius: 12px;
@@ -1609,18 +1584,18 @@ main, footer {
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
-  box-shadow: 0 8px 20px -3px rgba(2, 132, 199, 0.4);
+  box-shadow: 0 8px 25px -3px rgba(6, 182, 212, 0.45);
   transition: all 0.25s ease;
   margin-top: 1.5rem;
 }
 
 .bfm-submit-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 25px -3px rgba(2, 132, 199, 0.5);
+  box-shadow: 0 12px 30px -3px rgba(6, 182, 212, 0.6);
+  background: linear-gradient(135deg, #0369a1 0%, #0891b2 100%);
 }
 
 @media (max-width: 600px) {
-  .bfm-step span { display: none; }
   .bfm-body { padding: 1.2rem 1rem; }
   .bfm-header { padding: 1rem; }
 }
