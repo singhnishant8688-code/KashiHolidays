@@ -80,9 +80,63 @@ class Testimonial(BaseModel):
     role: str
     comment: str
     rating: int
+    created_at: Optional[str] = None
+
+
+class TestimonialCreate(BaseModel):
+    name: str = Field(..., min_length=2, description="Customer full name")
+    role: Optional[str] = Field("Verified Traveler", description="Trip category or city (e.g. Family Tour - Delhi)")
+    comment: str = Field(..., min_length=5, description="Review comment text")
+    rating: Optional[int] = Field(5, ge=1, le=5, description="Star rating between 1 and 5")
 
 
 # --- Database Helper Functions ---
+
+def load_testimonials() -> list:
+    try:
+        with open(TESTIMONIALS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+def save_testimonials(testimonials: list):
+    with open(TESTIMONIALS_FILE, "w", encoding="utf-8") as f:
+        json.dump(testimonials, f, indent=2, ensure_ascii=False)
+
+
+# --- Testimonials / User Reviews Routes ---
+
+@app.get("/api/testimonials", response_model=List[Testimonial], summary="Get Traveler Reviews")
+def get_testimonials():
+    return load_testimonials()
+
+
+@app.post("/api/testimonials", response_model=Testimonial, status_code=status.HTTP_201_CREATED, summary="Add Real Customer Review")
+def add_testimonial(review: TestimonialCreate):
+    testimonials = load_testimonials()
+    new_id = max([t.get("id", 0) for t in testimonials], default=0) + 1
+    created_time = datetime.now().strftime("%b %d, %Y")
+    new_review = {
+        "id": new_id,
+        "name": review.name.strip(),
+        "role": review.role.strip() if review.role else "Verified Traveler",
+        "comment": review.comment.strip(),
+        "rating": min(max(review.rating or 5, 1), 5),
+        "created_at": created_time
+    }
+    testimonials.insert(0, new_review)
+    save_testimonials(testimonials)
+    return new_review
+
+
+@app.delete("/api/testimonials/{review_id}", summary="Delete Customer Review")
+def delete_testimonial(review_id: int):
+    testimonials = load_testimonials()
+    updated = [t for t in testimonials if t.get("id") != review_id]
+    if len(updated) == len(testimonials):
+        raise HTTPException(status_code=404, detail=f"Review ID {review_id} not found")
+    save_testimonials(updated)
+    return {"message": f"Review {review_id} deleted successfully"}
 
 def load_bookings() -> list:
     try:
@@ -234,47 +288,6 @@ def get_cabs():
         )
     ]
 
-
-TESTIMONIALS_FILE = os.path.join(DATA_DIR, "testimonials.json")
-
-def load_testimonials() -> list:
-    try:
-        with open(TESTIMONIALS_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return []
-
-def save_testimonials(testimonials: list):
-    with open(TESTIMONIALS_FILE, "w", encoding="utf-8") as f:
-        json.dump(testimonials, f, indent=2, ensure_ascii=False)
-
-
-class TestimonialCreate(BaseModel):
-    name: str
-    role: Optional[str] = "Verified Customer"
-    comment: str
-    rating: Optional[int] = 5
-
-
-@app.get("/api/testimonials", response_model=List[Testimonial], summary="Get Traveler Reviews")
-def get_testimonials():
-    return load_testimonials()
-
-
-@app.post("/api/testimonials", response_model=Testimonial, status_code=status.HTTP_201_CREATED, summary="Add Real Customer Review")
-def add_testimonial(review: TestimonialCreate):
-    testimonials = load_testimonials()
-    new_id = max([t.get("id", 0) for t in testimonials], default=0) + 1
-    new_review = {
-        "id": new_id,
-        "name": review.name,
-        "role": review.role or "Verified Customer",
-        "comment": review.comment,
-        "rating": review.rating or 5
-    }
-    testimonials.insert(0, new_review)
-    save_testimonials(testimonials)
-    return new_review
 
 
 # --- Static Files & Frontend Fallback Serving ---

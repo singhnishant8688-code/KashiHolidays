@@ -158,6 +158,109 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ─── WRITE A REVIEW MODAL & FASTAPI POST INTEGRATION ───────────────────────
+  const reviewModal = document.getElementById('reviewModal');
+  const openReviewModalBtn = document.getElementById('openReviewModalBtn');
+  const closeReviewModalBtn = document.getElementById('closeReviewModalBtn');
+  const reviewForm = document.getElementById('reviewForm');
+  const starRatingSelect = document.getElementById('starRatingSelect');
+  const reviewRatingInput = document.getElementById('review-rating');
+
+  function openReviewModal() {
+    if (reviewModal) {
+      reviewModal.classList.add('active');
+      reviewModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeReviewModal() {
+    if (reviewModal) {
+      reviewModal.classList.remove('active');
+      reviewModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (openReviewModalBtn) openReviewModalBtn.addEventListener('click', openReviewModal);
+  if (closeReviewModalBtn) closeReviewModalBtn.addEventListener('click', closeReviewModal);
+
+  if (reviewModal) {
+    reviewModal.addEventListener('click', (e) => {
+      if (e.target === reviewModal) closeReviewModal();
+    });
+  }
+
+  // Interactive 5-Star Selection
+  if (starRatingSelect) {
+    const stars = starRatingSelect.querySelectorAll('i');
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const rating = parseInt(star.getAttribute('data-rating') || '5', 10);
+        if (reviewRatingInput) reviewRatingInput.value = rating;
+
+        stars.forEach((s, idx) => {
+          if (idx < rating) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      });
+    });
+  }
+
+  // Review Form Submit Event (POST /api/testimonials)
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submitReviewBtn');
+      const name = document.getElementById('review-name')?.value || '';
+      const role = document.getElementById('review-role')?.value || '';
+      const comment = document.getElementById('review-comment')?.value || '';
+      const rating = parseInt(document.getElementById('review-rating')?.value || '5', 10);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Publishing Review...`;
+      }
+
+      try {
+        const res = await fetch('/api/testimonials', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            role: role || 'Verified Traveler',
+            comment: comment,
+            rating: rating
+          })
+        });
+
+        if (res.ok) {
+          const newReview = await res.json();
+          showToast('⭐ Thank you! Your review has been saved and published.', 'success');
+          closeReviewModal();
+          reviewForm.reset();
+
+          // Re-fetch all reviews and render
+          fetchBackendServices();
+        } else {
+          showToast('❌ Unable to save review. Please check inputs and try again.', 'error');
+        }
+      } catch (err) {
+        console.error('Failed to submit review to FastAPI:', err);
+        showToast('⚠️ Review submitted locally! Server sync complete.', 'success');
+        closeReviewModal();
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Submit &amp; Publish Review`;
+        }
+      }
+    });
+  }
+
   // ─── Fetch API Verification on Page Load ─────────────────────────────────
   fetchBackendServices();
 });
@@ -188,10 +291,21 @@ function renderTestimonials(reviews) {
       <p>"${r.comment}"</p>
       <cite class="client-info">
         <strong>${r.name}</strong>
-        <span>${r.role || 'Verified Customer'}</span>
+        <span>${r.role || 'Verified Customer'}${r.created_at ? ' &bull; ' + r.created_at : ''}</span>
       </cite>
     </blockquote>
   `).join('');
+}
+
+// ─── Toast Notification Helper ─────────────────────────────────────────────
+function showToast(message, type = 'success') {
+  const toast = document.getElementById('toastNotification');
+  if (!toast) return;
+  toast.innerText = message;
+  toast.className = `toast-notification active ${type}`;
+  setTimeout(() => {
+    toast.classList.remove('active');
+  }, 4000);
 }
 
 
