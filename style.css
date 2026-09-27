@@ -316,32 +316,39 @@ img {
 }
 
 .side-nav-links li a:hover {
-  background: #1e232d;
-  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(254, 189, 105, 0.09);
+  border-color: rgba(254, 189, 105, 0.45);
   color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-1.5px);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(254, 189, 105, 0.15);
 }
 
 .side-nav-links li a:hover span i {
-  transform: scale(1.12);
-  color: #ffffff;
+  transform: scale(1.14);
+  color: #febd69;
 }
 
 .side-nav-links li a:hover i.arrow-icon {
-  color: #ffffff;
+  color: #febd69;
   transform: translateX(3px);
 }
 
 .side-nav-links li a.active {
-  background: linear-gradient(180deg, #242933 0%, #13161c 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  background: linear-gradient(135deg, rgba(254, 189, 105, 0.22) 0%, rgba(217, 119, 6, 0.14) 100%);
+  border: 1.5px solid #febd69;
   color: #ffffff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  font-weight: 700;
+  box-shadow: 0 6px 22px rgba(254, 189, 105, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.25);
 }
 
 .side-nav-links li a.active span i {
-  color: #ffffff;
+  color: #febd69;
+  transform: scale(1.15);
+}
+
+.side-nav-links li a.active i.arrow-icon {
+  color: #febd69;
+  transform: translateX(3px);
 }
 
 /* Push Main & Footer content right so sidebar is always visible */
