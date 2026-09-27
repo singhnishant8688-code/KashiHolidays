@@ -1,13 +1,18 @@
+import html
 import json
 import os
 import uuid
 from datetime import datetime
 from typing import List, Optional
-from fastapi import FastAPI, HTTPException, Query, status
+from dotenv import load_dotenv
+from fastapi import FastAPI, HTTPException, Query, Header, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
+
+# Load Environment Variables from .env file
+load_dotenv()
 
 # Initialize FastAPI App
 app = FastAPI(
@@ -118,9 +123,9 @@ def add_testimonial(review: TestimonialCreate):
     created_time = datetime.now().strftime("%b %d, %Y")
     new_review = {
         "id": new_id,
-        "name": review.name.strip(),
-        "role": review.role.strip() if review.role else "Verified Traveler",
-        "comment": review.comment.strip(),
+        "name": sanitize_text(review.name),
+        "role": sanitize_text(review.role) if review.role else "Verified Traveler",
+        "comment": sanitize_text(review.comment),
         "rating": min(max(review.rating or 5, 1), 5),
         "created_at": created_time
     }
@@ -216,8 +221,24 @@ def create_booking(booking: BookingRequest):
     return new_booking
 
 
-@app.get("/api/bookings", response_model=List[BookingResponse], summary="List All Bookings")
-def list_bookings(phone: Optional[str] = Query(None, description="Filter by customer phone number")):
+ADMIN_SECRET_KEY = os.getenv("ADMIN_SECRET_KEY")
+if not ADMIN_SECRET_KEY:
+    # Safe default fallback for development if .env is missing
+    ADMIN_SECRET_KEY = "kashi_admin_secret_9988"
+
+def sanitize_text(val: Optional[str]) -> str:
+    if not val:
+        return ""
+    return html.escape(val.strip())
+
+
+@app.get("/api/bookings", response_model=List[BookingResponse], summary="List All Bookings (Admin Only)")
+def list_bookings(
+    phone: Optional[str] = Query(None, description="Filter by customer phone number"),
+    x_admin_key: Optional[str] = Header(None, alias="X-Admin-Key")
+):
+    if x_admin_key != ADMIN_SECRET_KEY:
+        raise HTTPException(status_code=401, detail="Unauthorized: Valid X-Admin-Key header required to view customer booking records.")
     bookings = load_bookings()
     if phone:
         bookings = [b for b in bookings if phone in b.get("phone", "")]

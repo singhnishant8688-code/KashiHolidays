@@ -1,0 +1,13 @@
+# Environment variables (contains sensitive secret keys)
+.env
+
+# Python cache & bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE / OS junk
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
