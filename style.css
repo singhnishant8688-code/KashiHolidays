@@ -1087,21 +1087,92 @@ main, footer {
 }
 
 .footer-links h4, .footer-contact h4 {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  font-weight: 700;
   margin-bottom: 1.2rem;
+  color: var(--white);
+  letter-spacing: 0.3px;
 }
 
 .footer-links ul li { margin-bottom: 0.6rem; }
 .footer-links a { color: var(--gray); font-size: 0.9rem; transition: var(--transition); }
-.footer-links a:hover { color: var(--white); }
+.footer-links a:hover { color: var(--white); padding-left: 4px; }
 
 .footer-contact p {
-  color: var(--gray);
-  font-size: 0.9rem;
-  margin-bottom: 0.8rem;
-  display: flex;
+  margin-bottom: 0.75rem;
+}
+
+.footer-contact-link {
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.7rem;
+  padding: 0.55rem 1rem;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.footer-contact-link i {
+  font-size: 1.05rem;
+  transition: transform 0.25s ease;
+}
+
+.footer-contact-link.phone {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.footer-contact-link.phone:hover {
+  background: rgba(56, 189, 248, 0.16);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateX(4px) translateY(-1px);
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.3);
+}
+
+.footer-contact-link.whatsapp {
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+.footer-contact-link.whatsapp:hover {
+  background: rgba(37, 211, 102, 0.18);
+  border-color: #25d366;
+  color: #ffffff;
+  transform: translateX(4px) translateY(-1px);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+}
+
+.footer-contact-link.insta {
+  color: #f472b6;
+  border-color: rgba(244, 114, 182, 0.3);
+}
+
+.footer-contact-link.insta:hover {
+  background: linear-gradient(135deg, rgba(225, 48, 108, 0.25), rgba(131, 58, 180, 0.25));
+  border-color: #e1306c;
+  color: #ffffff;
+  transform: translateX(4px) translateY(-1px);
+  box-shadow: 0 4px 16px rgba(225, 48, 108, 0.35);
+}
+
+.footer-contact-link:hover i {
+  transform: scale(1.22);
+}
+
+.footer-contact-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.4rem 0.2rem;
+  color: var(--gray);
+  font-size: 0.88rem;
 }
 
 .footer-bottom {
@@ -1598,4 +1669,43 @@ main, footer {
 @media (max-width: 600px) {
   .bfm-body { padding: 1.2rem 1rem; }
   .bfm-header { padding: 1rem; }
+}
+
+/* ==========================================================================
+   ABOUT VEERWANSHI TRAVELS SECTION
+   ========================================================================== */
+.about-section {
+  padding: 4rem 1.5rem;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.about-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2.5rem 2.2rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.about-card p {
+  color: #475569;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  margin-bottom: 1.4rem;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
+}
+
+.about-card strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .about-section { padding: 2.5rem 1rem; }
+  .about-card { padding: 1.6rem 1.2rem; }
+  .about-card p { font-size: 0.9rem; line-height: 1.65; }
 }

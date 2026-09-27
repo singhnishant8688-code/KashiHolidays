@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Rajesh Sharma",
+    "role": "Family Pilgrimage Tour (Delhi)",
+    "comment": "Booked an Innova Crysta for 3 days covering Kashi Vishwanath Dham, Ganga Aarti, Sarnath, and Ayodhya Ram Mandir. Driver Shyam Ji was punctual, polite, and very knowledgeable about local routes. Best cab service in Banaras!",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Ananya Deshmukh",
+    "role": "Solo Traveler (Mumbai)",
+    "comment": "As a female solo traveler, safety was my main concern. KashiHolidays arranged airport pickup and morning Subah-e-Banaras boat ride seamlessly. Driver arrived 10 minutes early. Highly recommended!",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "name": "Dr. R. K. Verma",
+    "role": "Ayodhya & Prayagraj Tour (Bengaluru)",
+    "comment": "Flawless arrangement for our family trip from Varanasi to Prayagraj Sangam & Ayodhya. Clean AC Ertiga cab, transparent fare with no hidden charges, and quick WhatsApp support!",
+    "rating": 5
+  }
+]

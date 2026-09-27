@@ -235,38 +235,46 @@ def get_cabs():
     ]
 
 
+TESTIMONIALS_FILE = os.path.join(DATA_DIR, "testimonials.json")
+
+def load_testimonials() -> list:
+    try:
+        with open(TESTIMONIALS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+def save_testimonials(testimonials: list):
+    with open(TESTIMONIALS_FILE, "w", encoding="utf-8") as f:
+        json.dump(testimonials, f, indent=2, ensure_ascii=False)
+
+
+class TestimonialCreate(BaseModel):
+    name: str
+    role: Optional[str] = "Verified Customer"
+    comment: str
+    rating: Optional[int] = 5
+
+
 @app.get("/api/testimonials", response_model=List[Testimonial], summary="Get Traveler Reviews")
 def get_testimonials():
-    return [
-        Testimonial(
-            id=1,
-            name="Rajesh Sharma",
-            role="Family Pilgrimage Tour (Delhi)",
-            comment="Booked an Innova Crysta for 3 days covering Kashi Vishwanath Dham, Ganga Aarti, Sarnath, and Ayodhya Ram Mandir. Driver Shyam Ji was punctual, polite, and very knowledgeable about local routes. Best cab service in Banaras!",
-            rating=5
-        ),
-        Testimonial(
-            id=2,
-            name="Ananya Deshmukh",
-            role="Solo Traveler (Mumbai)",
-            comment="As a female solo traveler, safety was my main concern. KashiHolidays arranged airport pickup and morning Subah-e-Banaras boat ride seamlessly. Driver arrived 10 minutes early. Highly recommended!",
-            rating=5
-        ),
-        Testimonial(
-            id=3,
-            name="Dr. R. K. Verma",
-            role="Ayodhya & Prayagraj Tour (Bengaluru)",
-            comment="Flawless arrangement for our family trip from Varanasi to Prayagraj Sangam & Ayodhya. Clean AC Ertiga cab, transparent fare with no hidden charges, and quick WhatsApp support!",
-            rating=5
-        ),
-        Testimonial(
-            id=4,
-            name="Amitav Banerjee",
-            role="Heritage & Ghats Tour (Kolkata)",
-            comment="The driver helped us navigate Banaras narrow alleys for Kashi Vishwanath Darshan and arranged a private boat for Ganga Aarti. Extremely polite and trustworthy service!",
-            rating=5
-        )
-    ]
+    return load_testimonials()
+
+
+@app.post("/api/testimonials", response_model=Testimonial, status_code=status.HTTP_201_CREATED, summary="Add Real Customer Review")
+def add_testimonial(review: TestimonialCreate):
+    testimonials = load_testimonials()
+    new_id = max([t.get("id", 0) for t in testimonials], default=0) + 1
+    new_review = {
+        "id": new_id,
+        "name": review.name,
+        "role": review.role or "Verified Customer",
+        "comment": review.comment,
+        "rating": review.rating or 5
+    }
+    testimonials.insert(0, new_review)
+    save_testimonials(testimonials)
+    return new_review
 
 
 # --- Static Files & Frontend Fallback Serving ---

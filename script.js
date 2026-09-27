@@ -163,17 +163,35 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ─── Fetch Backend Fleet & Testimonials ──────────────────────────────────
+// ─── Fetch Backend Fleet & Real Customer Reviews ───────────────────────────
 async function fetchBackendServices() {
   try {
-    const res = await fetch('/api/cabs');
+    const res = await fetch('/api/testimonials');
     if (res.ok) {
-      const cabs = await res.json();
-      console.log('✅ Loaded cab fleet from FastAPI backend:', cabs);
+      const reviews = await res.json();
+      renderTestimonials(reviews);
     }
   } catch (err) {
     console.log('FastAPI backend offline or static mode:', err);
   }
+}
+
+function renderTestimonials(reviews) {
+  const container = document.querySelector('.testimonials-grid');
+  if (!container || !reviews || !reviews.length) return;
+
+  container.innerHTML = reviews.map(r => `
+    <blockquote class="testimonial-card">
+      <div class="stars">
+        ${'<i class="fa-solid fa-star"></i>'.repeat(r.rating || 5)}
+      </div>
+      <p>"${r.comment}"</p>
+      <cite class="client-info">
+        <strong>${r.name}</strong>
+        <span>${r.role || 'Verified Customer'}</span>
+      </cite>
+    </blockquote>
+  `).join('');
 }
 
 
