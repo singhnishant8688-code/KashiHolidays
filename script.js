@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Open instant call & whatsapp popup when user clicks navbar options (Car Booking, Travel Booking, Hotel Booking, Boat Booking)
+  // Open instant call & whatsapp popup when user clicks navbar options
   document.querySelectorAll('.side-nav-links .nav-link').forEach(link => {
     link.addEventListener('click', () => {
       setTimeout(() => {
@@ -158,7 +158,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ─── Fetch API Verification on Page Load ─────────────────────────────────
+  fetchBackendServices();
 });
+
+
+// ─── Fetch Backend Fleet & Testimonials ──────────────────────────────────
+async function fetchBackendServices() {
+  try {
+    const res = await fetch('/api/cabs');
+    if (res.ok) {
+      const cabs = await res.json();
+      console.log('✅ Loaded cab fleet from FastAPI backend:', cabs);
+    }
+  } catch (err) {
+    console.log('FastAPI backend offline or static mode:', err);
+  }
+}
+
 
 // ─── Booking Form Modal FastAPI API + WhatsApp Submission ──────────────────
 async function submitBookingFormModal() {
@@ -172,6 +189,14 @@ async function submitBookingFormModal() {
   const name     = document.getElementById('bfm-name')?.value || '';
   const phone    = document.getElementById('bfm-phone')?.value || '';
 
+  const submitBtn = document.querySelector('.bfm-submit-btn');
+  const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Processing Booking...`;
+  }
+
   const payload = {
     service_type: serviceType,
     pickup_location: pickup,
@@ -183,6 +208,7 @@ async function submitBookingFormModal() {
   };
 
   try {
+    // 🔥 Send fetch() POST request to FastAPI endpoint
     const res = await fetch('/api/bookings', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -191,13 +217,31 @@ async function submitBookingFormModal() {
 
     if (res.ok) {
       const data = await res.json();
-      if (data.whatsapp_link) {
-        window.open(data.whatsapp_link, '_blank');
-        return;
+      console.log('✅ Booking created successfully via FastAPI:', data);
+
+      if (submitBtn) {
+        submitBtn.innerHTML = `<i class="fa-solid fa-circle-check"></i> Booking ${data.id} Created (${data.estimated_fare})! Opening WhatsApp...`;
       }
+
+      setTimeout(() => {
+        if (data.whatsapp_link) {
+          window.open(data.whatsapp_link, '_blank');
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnContent;
+        }
+      }, 1200);
+      return;
     }
   } catch (err) {
     console.warn('Backend API request skipped, falling back to direct WhatsApp link:', err);
+  }
+
+  // Fallback if API server is offline
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnContent;
   }
 
   const msg =
@@ -213,6 +257,7 @@ async function submitBookingFormModal() {
 
   window.open(`https://wa.me/918858852339?text=${encodeURIComponent(msg)}`, '_blank');
 }
+
 
 // ─── Original form FastAPI API + WhatsApp Submission ──────────────────────
 async function submitTaxiBooking() {
@@ -237,6 +282,7 @@ async function submitTaxiBooking() {
   };
 
   try {
+    // 🔥 Send fetch() POST request to FastAPI endpoint
     const res = await fetch('/api/bookings', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

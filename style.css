@@ -1142,11 +1142,11 @@ main, footer {
   position: relative;
   background-color: #0f172a;
   color: #f8fafc;
-  width: 90%;
-  max-width: 260px;
-  border-radius: 12px;
+  width: 94%;
+  max-width: 348px;
+  border-radius: 17px;
   overflow: hidden;
-  box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 22px 45px -10px rgba(0, 0, 0, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.12);
   transform: translateY(20px);
   transition: transform 0.3s ease;
@@ -1159,17 +1159,17 @@ main, footer {
 /* Top Right Floating Close / Back Button */
 .modal-close-btn {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 9px;
+  right: 9px;
   z-index: 50;
   background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: #ffffff;
-  width: 22px;
-  height: 22px;
+  width: 29px;
+  height: 29px;
   border-radius: 50%;
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -1189,7 +1189,7 @@ main, footer {
 /* Car Showcase Banner */
 .modal-car-showcase {
   position: relative;
-  height: 80px;
+  height: 115px;
   width: 100%;
   overflow: hidden;
   background-color: #1e293b;
@@ -1205,42 +1205,42 @@ main, footer {
 
 .modal-car-showcase .car-badge {
   position: absolute;
-  bottom: 0.4rem;
-  left: 0.4rem;
+  bottom: 0.55rem;
+  left: 0.55rem;
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(6px);
   color: #facc15;
-  padding: 0.15rem 0.45rem;
+  padding: 0.24rem 0.62rem;
   border-radius: 50px;
-  font-size: 0.48rem;
+  font-size: 0.64rem;
   font-weight: 800;
   border: 1px solid rgba(250, 204, 21, 0.4);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.28rem;
 }
 
 /* Modal Body */
 .modal-body {
-  padding: 0.7rem 0.6rem 0.5rem;
+  padding: 1.05rem 0.95rem 0.85rem;
   text-align: center;
 }
 
 .modal-subtitle {
-  font-size: 0.64rem;
+  font-size: 0.84rem;
   color: #f1f5f9;
   font-weight: 800;
-  margin-bottom: 0.6rem;
-  line-height: 1.25;
-  padding: 0 0.1rem;
+  margin-bottom: 0.95rem;
+  line-height: 1.35;
+  padding: 0 0.25rem;
 }
 
 .contact-box {
   position: relative;
-  border-radius: 8px;
-  padding: 0.6rem 0.5rem 0.45rem;
-  margin-bottom: 0.65rem;
+  border-radius: 12px;
+  padding: 0.95rem 0.85rem 0.8rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -1256,15 +1256,15 @@ main, footer {
 
 .box-badge {
   position: absolute;
-  top: -8px;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 0.12rem 0.5rem;
+  padding: 0.2rem 0.72rem;
   border-radius: 50px;
-  font-size: 0.45rem;
+  font-size: 0.6rem;
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
   white-space: nowrap;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
@@ -1273,10 +1273,10 @@ main, footer {
 .badge-green { background-color: #25d366; }
 
 .phone-number {
-  font-size: 1.05rem;
+  font-size: 1.45rem;
   font-weight: 900;
   display: block;
-  margin: 0.1rem 0;
+  margin: 0.2rem 0;
   text-decoration: none;
   letter-spacing: -0.5px;
 }
@@ -1285,25 +1285,25 @@ main, footer {
 .text-teal { color: #2dd4bf; }
 
 .contact-box p {
-  font-size: 0.54rem;
+  font-size: 0.72rem;
   color: #94a3b8;
-  margin-bottom: 0.35rem;
-  line-height: 1.2;
+  margin-bottom: 0.65rem;
+  line-height: 1.3;
 }
 
 .modal-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.4rem;
   width: 100%;
-  padding: 0.4rem 0.5rem;
-  border-radius: 6px;
+  padding: 0.62rem 0.78rem;
+  border-radius: 9px;
   font-weight: 800;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   color: #ffffff;
   text-decoration: none;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
 }
 
@@ -1314,10 +1314,10 @@ main, footer {
 /* Modal Footer */
 .modal-footer {
   border-top: 1px dashed rgba(255, 255, 255, 0.12);
-  padding: 0.45rem 0.55rem;
+  padding: 0.68rem 0.85rem;
   display: flex;
   justify-content: space-between;
-  font-size: 0.52rem;
+  font-size: 0.68rem;
   font-weight: 700;
   color: #cbd5e1;
   background-color: #0b1329;
