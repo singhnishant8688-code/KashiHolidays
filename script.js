@@ -160,8 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// ─── Booking Form Modal WhatsApp Submission ───────────────────────────────
-function submitBookingFormModal() {
+// ─── Booking Form Modal FastAPI API + WhatsApp Submission ──────────────────
+async function submitBookingFormModal() {
   const activeTab = document.querySelector('.bfm-tab.active');
   const serviceType = activeTab ? activeTab.getAttribute('data-type') : 'One Way';
 
@@ -171,6 +171,34 @@ function submitBookingFormModal() {
   const vehicle  = document.getElementById('bfm-vehicle')?.value || '';
   const name     = document.getElementById('bfm-name')?.value || '';
   const phone    = document.getElementById('bfm-phone')?.value || '';
+
+  const payload = {
+    service_type: serviceType,
+    pickup_location: pickup,
+    drop_location: drop,
+    pickup_datetime: datetime,
+    vehicle: vehicle,
+    name: name,
+    phone: phone
+  };
+
+  try {
+    const res = await fetch('/api/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data.whatsapp_link) {
+        window.open(data.whatsapp_link, '_blank');
+        return;
+      }
+    }
+  } catch (err) {
+    console.warn('Backend API request skipped, falling back to direct WhatsApp link:', err);
+  }
 
   const msg =
     `*🚖 NEW TAXI BOOKING REQUEST (KashiHolidays)*\n\n` +
@@ -186,8 +214,8 @@ function submitBookingFormModal() {
   window.open(`https://wa.me/918858852339?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
-// ─── Original form WhatsApp Submission ───────────────────────────────────
-function submitTaxiBooking() {
+// ─── Original form FastAPI API + WhatsApp Submission ──────────────────────
+async function submitTaxiBooking() {
   const activeTab = document.querySelector('.service-type-tabs .tab-btn.active');
   const serviceType = activeTab ? activeTab.getAttribute('data-type') : 'One Way';
 
@@ -197,6 +225,34 @@ function submitTaxiBooking() {
   const vehicle  = document.getElementById('selected-vehicle')?.value || '';
   const name     = document.getElementById('passenger-name')?.value || '';
   const phone    = document.getElementById('passenger-phone')?.value || '';
+
+  const payload = {
+    service_type: serviceType,
+    pickup_location: pickup,
+    drop_location: drop,
+    pickup_datetime: datetime,
+    vehicle: vehicle,
+    name: name,
+    phone: phone
+  };
+
+  try {
+    const res = await fetch('/api/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data.whatsapp_link) {
+        window.open(data.whatsapp_link, '_blank');
+        return;
+      }
+    }
+  } catch (err) {
+    console.warn('Backend API request skipped, falling back to direct WhatsApp link:', err);
+  }
 
   const msg =
     `*🚖 NEW TAXI BOOKING REQUEST (KashiHolidays)*\n\n` +

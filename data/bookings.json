@@ -1,0 +1,16 @@
+[
+  {
+    "id": "KH-8A3DF2",
+    "service_type": "One Way",
+    "pickup_location": "Varanasi Airport",
+    "drop_location": "Dashashwamedh Ghat",
+    "pickup_datetime": "2026-09-30 10:00",
+    "vehicle": "Innova Crysta",
+    "name": "Nishant Singh",
+    "phone": "8858852339",
+    "status": "CONFIRMED",
+    "estimated_fare": "₹1,899",
+    "created_at": "2026-09-28 00:05:13",
+    "whatsapp_link": "https://wa.me/918858852339?text=Hi%20KashiHolidays%2C%20I%20want%20to%20confirm%20booking%20KH-8A3DF2%3A%0A%E2%80%A2%20Service%3A%20One%20Way%0A%E2%80%A2%20From%3A%20Varanasi%20Airport%0A%E2%80%A2%20To%3A%20Dashashwamedh%20Ghat%0A%E2%80%A2%20Date/Time%3A%202026-09-30%2010%3A00%0A%E2%80%A2%20Vehicle%3A%20Innova%20Crysta%0A%E2%80%A2%20Name%3A%20Nishant%20Singh%0A%E2%80%A2%20Phone%3A%208858852339"
+  }
+]
