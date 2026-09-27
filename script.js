@@ -135,12 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Open instant call & whatsapp popup when user clicks navbar options
-  document.querySelectorAll('.side-nav-links .nav-link').forEach(link => {
+  // Toggle active card button style on side navbar links
+  const sideNavLinks = document.querySelectorAll('.side-nav-links .nav-link');
+  sideNavLinks.forEach(link => {
     link.addEventListener('click', () => {
-      setTimeout(() => {
-        openInstantModal();
-      }, 400);
+      sideNavLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
     });
   });
 
