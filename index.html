@@ -95,19 +95,19 @@
         <div class="drawer-section-title">Stays & Experiences</div>
         <ul class="side-nav-links">
           <li>
-            <a href="#destinations" class="nav-link">
+            <a href="#destinations" class="nav-link" data-filter="hotel">
               <span><i class="fa-solid fa-hotel"></i> Hotel Booking</span>
               <i class="fa-solid fa-chevron-right arrow-icon"></i>
             </a>
           </li>
           <li>
-            <a href="#destinations" class="nav-link">
+            <a href="#destinations" class="nav-link" data-filter="boat">
               <span><i class="fa-solid fa-ship"></i> Boat Booking</span>
               <i class="fa-solid fa-chevron-right arrow-icon"></i>
             </a>
           </li>
           <li>
-            <a href="#destinations" class="nav-link">
+            <a href="#destinations" class="nav-link" data-filter="temple">
               <span><i class="fa-solid fa-gopuram"></i> Temple &amp; Darshan Tours</span>
               <i class="fa-solid fa-chevron-right arrow-icon"></i>
             </a>
@@ -443,10 +443,19 @@
         <p>Explore sacred ghats, divine temple darshan, river boat rides, and authentic Banaras heritage tours.</p>
       </div>
 
+      <!-- Category Filter Pills Bar -->
+      <div class="category-filter-bar" id="categoryFilterBar">
+        <button type="button" class="filter-btn active" data-filter="all"><i class="fa-solid fa-border-all"></i> All Packages</button>
+        <button type="button" class="filter-btn" data-filter="hotel"><i class="fa-solid fa-hotel"></i> Hotel Booking</button>
+        <button type="button" class="filter-btn" data-filter="boat"><i class="fa-solid fa-ship"></i> Boat Booking</button>
+        <button type="button" class="filter-btn" data-filter="temple"><i class="fa-solid fa-gopuram"></i> Temple &amp; Darshan</button>
+        <button type="button" class="filter-btn" data-filter="ghat"><i class="fa-solid fa-water"></i> Ghats &amp; Aarti</button>
+      </div>
+
       <div class="cards-grid">
 
         <!-- Card 1: Boat Booking -->
-        <article class="card">
+        <article class="card" data-category="boat">
           <div class="card-img-container">
             <img src="assets/card_boat.jpg" alt="Sunrise & Sunset Boat Booking in Varanasi" loading="lazy">
             <span class="badge">₹1,499 / Ride</span>
@@ -464,7 +473,7 @@
         </article>
 
         <!-- Card 2: Hotel Booking -->
-        <article class="card">
+        <article class="card" data-category="hotel">
           <div class="card-img-container">
             <img src="assets/card_hotel.jpg" alt="Heritage Hotel & Stay Booking Varanasi" loading="lazy">
             <span class="badge">₹2,999 / Night</span>
@@ -482,7 +491,7 @@
         </article>
 
         <!-- Card 3: Ghat Sightseeing -->
-        <article class="card">
+        <article class="card" data-category="ghat">
           <div class="card-img-container">
             <img src="assets/card_ghat.jpg" alt="Ghat Sightseeing Tour Varanasi" loading="lazy">
             <span class="badge">₹999 / Tour</span>
@@ -500,7 +509,7 @@
         </article>
 
         <!-- Card 4: Ganga Aarti -->
-        <article class="card">
+        <article class="card" data-category="ghat aarti temple">
           <div class="card-img-container">
             <img src="assets/card_aarti.jpg" alt="Grand Ganga Aarti Experience" loading="lazy">
             <span class="badge">VIP Reserved</span>
@@ -518,7 +527,7 @@
         </article>
 
         <!-- Card 5: Temple Darshan -->
-        <article class="card">
+        <article class="card" data-category="temple">
           <div class="card-img-container">
             <img src="assets/card_temple.jpg" alt="Kashi Vishwanath Temple Darshan" loading="lazy">
             <span class="badge">Sugam Darshan</span>
@@ -536,7 +545,7 @@
         </article>
 
         <!-- Card 6: Heritage & Cultural Walk -->
-        <article class="card">
+        <article class="card" data-category="ghat heritage">
           <div class="card-img-container">
             <img src="assets/card_heritage.jpg" alt="Banaras Heritage & Culture Walk" loading="lazy">
             <span class="badge">₹1,999 / Day</span>

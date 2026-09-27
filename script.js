@@ -135,12 +135,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Open instant call & whatsapp popup when user clicks navbar options
-  document.querySelectorAll('.side-nav-links .nav-link').forEach(link => {
+  // ─── DYNAMIC PACKAGE CATEGORY FILTERING ──────────────────────────────────
+  const filterBtns = document.querySelectorAll('.category-filter-bar .filter-btn');
+  const destinationCards = document.querySelectorAll('#destinations .cards-grid .card');
+
+  function filterPackages(category) {
+    if (!category) category = 'all';
+
+    // Update filter buttons active state
+    filterBtns.forEach(btn => {
+      if (btn.getAttribute('data-filter') === category) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Show / Hide matching cards smoothly
+    destinationCards.forEach(card => {
+      const cardCat = card.getAttribute('data-category') || '';
+      if (category === 'all' || cardCat.includes(category)) {
+        card.style.display = 'flex';
+        requestAnimationFrame(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+        });
+      } else {
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          if (card.style.opacity === '0') {
+            card.style.display = 'none';
+          }
+        }, 250);
+      }
+    });
+  }
+
+  // Event listener for filter bar buttons
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.getAttribute('data-filter');
+      filterPackages(cat);
+    });
+  });
+
+  // Event listener for Side Drawer & Nav links with data-filter
+  document.querySelectorAll('a[data-filter]').forEach(link => {
     link.addEventListener('click', () => {
-      setTimeout(() => {
-        openInstantModal();
-      }, 400);
+      const cat = link.getAttribute('data-filter');
+      if (cat) {
+        filterPackages(cat);
+      }
     });
   });
 
@@ -149,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bookingModal && !bookingFormModal?.classList.contains('active')) {
       openInstantModal();
     }
-  }, 5000);
+  }, 8000);
 
   if (closeModalBtn) closeModalBtn.addEventListener('click', closeInstantModal);
   if (bookingModal) {
