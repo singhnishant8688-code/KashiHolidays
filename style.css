@@ -1096,6 +1096,28 @@ footer {
   margin-bottom: 1.2rem;
 }
 
+.client-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-style: normal;
+}
+
+.client-info strong {
+  font-size: 0.95rem;
+  color: var(--dark);
+}
+
+.client-info span {
+  font-size: 0.82rem;
+  color: var(--gray);
+}
+
+.text-gold {
+  color: #f59e0b;
+}
+
+
 /* ==========================================================================
    FOOTER SECTION
    ========================================================================== */
@@ -2016,4 +2038,157 @@ footer {
 .no-reviews-placeholder p {
   font-size: 1.1rem;
   margin: 0;
+}
+
+/* ==========================================================================
+   DARK REVIEW MODAL
+   ========================================================================== */
+.dark-review-card {
+  background: #111 !important;
+  border-radius: 16px !important;
+  padding: 2rem !important;
+  max-width: 480px !important;
+  width: 92% !important;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.dark-review-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: #aaa;
+  font-size: 1.4rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.dark-review-close:hover { background: rgba(255,255,255,0.18); color: #fff; }
+
+.dark-review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dark-review-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.dark-review-field input,
+.dark-review-field textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-family: var(--font-family);
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+.dark-review-field input::placeholder,
+.dark-review-field textarea::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+.dark-review-field input:focus,
+.dark-review-field textarea:focus {
+  border-color: rgba(255,255,255,0.35);
+}
+
+/* Rating block */
+.dark-rating-block {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+}
+
+.dark-rating-title {
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.dark-rating-hint {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.82rem;
+  margin-bottom: 0.9rem;
+}
+
+.dark-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.dark-star-select {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dark-star-select i {
+  font-size: 1.6rem;
+  color: #f59e0b;
+  cursor: pointer;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.dark-star-select i:hover {
+  transform: scale(1.2);
+}
+
+.dark-star-select i.filled {
+  /* fa-solid applied via JS */
+}
+
+.dark-rating-counter {
+  color: #f59e0b;
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 2.5rem;
+}
+
+/* Submit button */
+.dark-submit-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  color: #ccc;
+  font-size: 0.95rem;
+  font-family: var(--font-family);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+  letter-spacing: 0.3px;
+}
+.dark-submit-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.dark-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 500px) {
+  .dark-review-row {
+    grid-template-columns: 1fr;
+  }
 }

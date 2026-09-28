@@ -191,21 +191,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Interactive 5-Star Selection
+  // Interactive 5-Star Selection (dark style: outline → solid + X/5 counter)
+  const ratingCounter = document.getElementById('ratingCounter');
   if (starRatingSelect) {
     const stars = starRatingSelect.querySelectorAll('i');
+
+    function updateStars(rating) {
+      stars.forEach((s, idx) => {
+        if (idx < rating) {
+          s.classList.remove('fa-regular');
+          s.classList.add('fa-solid');
+        } else {
+          s.classList.remove('fa-solid');
+          s.classList.add('fa-regular');
+        }
+      });
+      if (ratingCounter) ratingCounter.textContent = rating + '/5';
+      if (reviewRatingInput) reviewRatingInput.value = rating;
+    }
+
     stars.forEach(star => {
       star.addEventListener('click', () => {
         const rating = parseInt(star.getAttribute('data-rating') || '5', 10);
-        if (reviewRatingInput) reviewRatingInput.value = rating;
-
+        updateStars(rating);
+      });
+      star.addEventListener('mouseenter', () => {
+        const hoverRating = parseInt(star.getAttribute('data-rating') || '1', 10);
         stars.forEach((s, idx) => {
-          if (idx < rating) {
-            s.classList.add('active');
-          } else {
-            s.classList.remove('active');
-          }
+          s.classList.toggle('fa-solid', idx < hoverRating);
+          s.classList.toggle('fa-regular', idx >= hoverRating);
         });
+      });
+      star.addEventListener('mouseleave', () => {
+        const current = parseInt(reviewRatingInput?.value || '0', 10);
+        updateStars(current);
       });
     });
   }
@@ -218,7 +237,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = document.getElementById('review-name')?.value || '';
       const role = document.getElementById('review-role')?.value || '';
       const comment = document.getElementById('review-comment')?.value || '';
-      const rating = parseInt(document.getElementById('review-rating')?.value || '5', 10);
+      const rating = parseInt(document.getElementById('review-rating')?.value || '0', 10);
+      if (!name) { showToast('❌ Please enter your name.', 'error'); return; }
+      if (rating < 1) { showToast('❌ Please select a star rating.', 'error'); return; }
 
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -242,6 +263,12 @@ document.addEventListener('DOMContentLoaded', () => {
           showToast('⭐ Thank you! Your review has been saved and published.', 'success');
           closeReviewModal();
           reviewForm.reset();
+          // Reset stars and counter
+          if (ratingCounter) ratingCounter.textContent = '0/5';
+          if (reviewRatingInput) reviewRatingInput.value = '0';
+          document.querySelectorAll('#starRatingSelect i').forEach(s => {
+            s.classList.remove('fa-solid'); s.classList.add('fa-regular');
+          });
 
           // Re-fetch all reviews and render
           fetchBackendServices();
@@ -255,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Submit &amp; Publish Review`;
+          submitBtn.innerHTML = 'Submit Review';
         }
       }
     });
