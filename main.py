@@ -33,11 +33,16 @@ app.add_middleware(
 # File Paths for Persistent Data
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 BOOKINGS_FILE = os.path.join(DATA_DIR, "bookings.json")
+TESTIMONIALS_FILE = os.path.join(DATA_DIR, "testimonials.json")
 
 os.makedirs(DATA_DIR, exist_ok=True)
 if not os.path.exists(BOOKINGS_FILE):
     with open(BOOKINGS_FILE, "w", encoding="utf-8") as f:
         json.dump([], f)
+if not os.path.exists(TESTIMONIALS_FILE):
+    with open(TESTIMONIALS_FILE, "w", encoding="utf-8") as f:
+        json.dump([], f)
+
 
 
 # --- Pydantic Data Schemas ---
