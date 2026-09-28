@@ -82,6 +82,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ─── Passenger Counter ────────────────────────────────────────────────────
+  const passMinusBtn = document.getElementById('bfm-pass-minus');
+  const passPlusBtn  = document.getElementById('bfm-pass-plus');
+  const passDisplay  = document.getElementById('bfm-pass-display');
+  const passInput    = document.getElementById('bfm-passengers');
+  const passLabel    = document.querySelector('.bfm-pass-label');
+
+  function updatePassengerDisplay(count) {
+    if (passDisplay) passDisplay.textContent = count;
+    if (passInput)   passInput.value = count;
+    if (passLabel)   passLabel.textContent = count === 1 ? 'Passenger' : 'Passengers';
+  }
+
+  if (passMinusBtn) {
+    passMinusBtn.addEventListener('click', () => {
+      const current = parseInt(passInput?.value || '1', 10);
+      if (current > 1) updatePassengerDisplay(current - 1);
+    });
+  }
+
+  if (passPlusBtn) {
+    passPlusBtn.addEventListener('click', () => {
+      const current = parseInt(passInput?.value || '1', 10);
+      if (current < 17) updatePassengerDisplay(current + 1);
+    });
+  }
+
   // ─── INSTANT BOOKING MODAL (Call/WhatsApp popup) ─────────────────────────
   const bookingModal = document.getElementById('bookingModal');
   const closeModalBtn = document.getElementById('closeModalBtn');
@@ -365,6 +392,7 @@ async function submitBookingFormModal() {
   const vehicle = document.getElementById('bfm-vehicle')?.value || '';
   const name = document.getElementById('bfm-name')?.value || '';
   const phone = document.getElementById('bfm-phone')?.value || '';
+  const passengers = parseInt(document.getElementById('bfm-passengers')?.value || '1', 10);
 
   const submitBtn = document.querySelector('.bfm-submit-btn');
   const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
@@ -380,6 +408,7 @@ async function submitBookingFormModal() {
     drop_location: drop,
     pickup_datetime: datetime,
     vehicle: vehicle,
+    passengers: passengers,
     name: name,
     phone: phone
   };
