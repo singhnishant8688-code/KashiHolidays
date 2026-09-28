@@ -1993,3 +1993,27 @@ footer {
 .toast-notification.error {
   border-left: 5px solid #ef4444;
 }
+
+/* ─── No Reviews Empty State ─────────────────────────────────────────────── */
+.no-reviews-placeholder {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--gray);
+}
+
+.no-reviews-placeholder i {
+  font-size: 3rem;
+  color: var(--primary);
+  opacity: 0.5;
+}
+
+.no-reviews-placeholder p {
+  font-size: 1.1rem;
+  margin: 0;
+}

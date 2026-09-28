@@ -280,13 +280,23 @@ async function fetchBackendServices() {
 }
 
 function renderTestimonials(reviews) {
-  const container = document.querySelector('.testimonials-grid');
-  if (!container || !reviews || !reviews.length) return;
+  const container = document.getElementById('testimonialsGrid');
+  const noReviewsMsg = document.getElementById('noReviewsMsg');
+  if (!container) return;
 
-  container.innerHTML = reviews.map(r => `
+  if (!reviews || !reviews.length) {
+    // Show empty state
+    if (noReviewsMsg) noReviewsMsg.style.display = '';
+    return;
+  }
+
+  // Hide empty state, render real reviews
+  if (noReviewsMsg) noReviewsMsg.style.display = 'none';
+
+  const cards = reviews.map(r => `
     <blockquote class="testimonial-card">
       <div class="stars">
-        ${'<i class="fa-solid fa-star"></i>'.repeat(r.rating || 5)}
+        ${'<i class="fa-solid fa-star"></i>'.repeat(Math.min(r.rating || 5, 5))}
       </div>
       <p>"${r.comment}"</p>
       <cite class="client-info">
@@ -295,6 +305,11 @@ function renderTestimonials(reviews) {
       </cite>
     </blockquote>
   `).join('');
+
+  // Prepend cards before the placeholder (keep placeholder in DOM)
+  container.innerHTML = cards + (noReviewsMsg ? noReviewsMsg.outerHTML : '');
+  const newPlaceholder = document.getElementById('noReviewsMsg');
+  if (newPlaceholder) newPlaceholder.style.display = 'none';
 }
 
 // ─── Toast Notification Helper ─────────────────────────────────────────────
