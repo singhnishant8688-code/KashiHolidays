@@ -191,19 +191,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Interactive 5-Star Selection (dark style: outline → solid + X/5 counter)
+  // Interactive 5-Star Selection (CSS unicode stars)
   const ratingCounter = document.getElementById('ratingCounter');
   if (starRatingSelect) {
-    const stars = starRatingSelect.querySelectorAll('i');
+    const stars = starRatingSelect.querySelectorAll('.css-star');
 
     function updateStars(rating) {
       stars.forEach((s, idx) => {
         if (idx < rating) {
-          s.classList.remove('fa-regular');
-          s.classList.add('fa-solid');
+          s.classList.add('active');
         } else {
-          s.classList.remove('fa-solid');
-          s.classList.add('fa-regular');
+          s.classList.remove('active');
         }
       });
       if (ratingCounter) ratingCounter.textContent = rating + '/5';
@@ -218,8 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
       star.addEventListener('mouseenter', () => {
         const hoverRating = parseInt(star.getAttribute('data-rating') || '1', 10);
         stars.forEach((s, idx) => {
-          s.classList.toggle('fa-solid', idx < hoverRating);
-          s.classList.toggle('fa-regular', idx >= hoverRating);
+          s.classList.toggle('active', idx < hoverRating);
         });
       });
       star.addEventListener('mouseleave', () => {
@@ -266,8 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
           // Reset stars and counter
           if (ratingCounter) ratingCounter.textContent = '0/5';
           if (reviewRatingInput) reviewRatingInput.value = '0';
-          document.querySelectorAll('#starRatingSelect i').forEach(s => {
-            s.classList.remove('fa-solid'); s.classList.add('fa-regular');
+          document.querySelectorAll('#starRatingSelect .css-star').forEach(s => {
+            s.classList.remove('active');
           });
 
           // Re-fetch all reviews and render
@@ -320,18 +317,24 @@ function renderTestimonials(reviews) {
   // Hide empty state, render real reviews
   if (noReviewsMsg) noReviewsMsg.style.display = 'none';
 
-  const cards = reviews.map(r => `
+  const cards = reviews.map(r => {
+    const rating = Math.min(Math.max(parseInt(r.rating) || 5, 1), 5);
+    const filledStars = '★'.repeat(rating);
+    const emptyStars = '★'.repeat(5 - rating);
+    const dateStr = r.created_at ? new Date(r.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+    return `
     <blockquote class="testimonial-card">
       <div class="stars">
-        ${'<i class="fa-solid fa-star"></i>'.repeat(Math.min(r.rating || 5, 5))}
+        <span style="color:#f59e0b;">${filledStars}</span><span style="color:rgba(255,255,255,0.2);">${emptyStars}</span>
       </div>
       <p>"${r.comment}"</p>
       <cite class="client-info">
         <strong>${r.name}</strong>
-        <span>${r.role || 'Verified Customer'}${r.created_at ? ' &bull; ' + r.created_at : ''}</span>
+        <span>${r.role || 'Verified Traveler'}${dateStr ? ' &bull; ' + dateStr : ''}</span>
       </cite>
     </blockquote>
-  `).join('');
+  `;
+  }).join('');
 
   // Prepend cards before the placeholder (keep placeholder in DOM)
   container.innerHTML = cards + (noReviewsMsg ? noReviewsMsg.outerHTML : '');
