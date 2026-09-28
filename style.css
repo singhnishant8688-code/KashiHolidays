@@ -833,16 +833,24 @@ footer {
 }
 
 .cab-icon-box {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   background-color: #f1f5f9;
   color: var(--primary);
-  border-radius: 12px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.6rem;
   margin-bottom: 1rem;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.cab-icon-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .cab-card-header h3 {
@@ -1064,8 +1072,8 @@ footer {
 .testimonials {
   background: linear-gradient(160deg, #0d0d0d 0%, #111827 100%);
   padding: 5rem 1.5rem;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .testimonials .section-header h2 {
@@ -1073,7 +1081,7 @@ footer {
 }
 
 .testimonials .section-header p {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .testimonials-grid {
@@ -1085,21 +1093,21 @@ footer {
 }
 
 .testimonial-card {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 1.8rem;
   border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-left: 3px solid #f59e0b;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
 .testimonial-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(245,158,11,0.5);
-  box-shadow: 0 8px 36px rgba(0,0,0,0.5);
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.5);
 }
 
 .stars {
@@ -1111,7 +1119,7 @@ footer {
 
 .testimonial-card p {
   font-style: italic;
-  color: rgba(255,255,255,0.78);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 0.92rem;
   line-height: 1.65;
   margin-bottom: 1.3rem;
@@ -1122,7 +1130,7 @@ footer {
   flex-direction: column;
   gap: 0.2rem;
   font-style: normal;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1rem;
 }
 
@@ -1134,7 +1142,7 @@ footer {
 
 .client-info span {
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.42);
+  color: rgba(255, 255, 255, 0.42);
 }
 
 .text-gold {
@@ -2050,7 +2058,7 @@ footer {
   gap: 1rem;
   padding: 3rem 2rem;
   text-align: center;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .no-reviews-placeholder i {
@@ -2075,14 +2083,14 @@ footer {
   width: 92% !important;
   position: relative;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .dark-review-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border: none;
   color: #aaa;
   font-size: 1.4rem;
@@ -2095,7 +2103,11 @@ footer {
   justify-content: center;
   transition: background 0.2s, color 0.2s;
 }
-.dark-review-close:hover { background: rgba(255,255,255,0.18); color: #fff; }
+
+.dark-review-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
 
 .dark-review-form {
   display: flex;
@@ -2112,8 +2124,8 @@ footer {
 .dark-review-field input,
 .dark-review-field textarea {
   width: 100%;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   color: #fff;
   padding: 0.75rem 1rem;
@@ -2123,19 +2135,21 @@ footer {
   transition: border-color 0.2s;
   resize: none;
 }
+
 .dark-review-field input::placeholder,
 .dark-review-field textarea::placeholder {
-  color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
 }
+
 .dark-review-field input:focus,
 .dark-review-field textarea:focus {
-  border-color: rgba(255,255,255,0.35);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 /* Rating block */
 .dark-rating-block {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 1.2rem 1.4rem;
 }
@@ -2148,7 +2162,7 @@ footer {
 }
 
 .dark-rating-hint {
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.45);
   font-size: 0.82rem;
   margin-bottom: 0.9rem;
 }
@@ -2167,7 +2181,7 @@ footer {
 
 .css-star {
   font-size: 2rem;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
   transition: color 0.15s ease, transform 0.15s ease;
   user-select: none;
@@ -2191,8 +2205,8 @@ footer {
 .dark-submit-btn {
   width: 100%;
   padding: 0.85rem;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   color: #ccc;
   font-size: 0.95rem;
@@ -2202,11 +2216,13 @@ footer {
   transition: background 0.25s, color 0.25s, border-color 0.25s;
   letter-spacing: 0.3px;
 }
+
 .dark-submit-btn:hover {
   background: var(--primary);
   border-color: var(--primary);
   color: #fff;
 }
+
 .dark-submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
