@@ -153,10 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const price = card ? (card.querySelector('.badge')?.innerText || '') : '';
 
       const msg =
-        `*🚖 NEW BOOKING INQUIRY (KashiHolidays)*\n\n` +
+        `*🚖 NEW BOOKING INQUIRY (Kashitriptravels)*\n\n` +
         `*Package:* ${title}\n` +
         (price ? `*Price:* ${price}\n` : '') +
-        `\nHi KashiHolidays, I want to book the ${title} package. Please share availability & booking details!`;
+        `\nHi Kashitriptravels, I want to book the ${title} package. Please share availability & booking details!`;
 
       window.open(`https://wa.me/918858852339?text=${encodeURIComponent(msg)}`, '_blank');
     });
@@ -451,7 +451,7 @@ async function submitBookingFormModal() {
   }
 
   const msg =
-    `*🚖 NEW TAXI BOOKING REQUEST (KashiHolidays)*\n\n` +
+    `*🚖 NEW TAXI BOOKING REQUEST (Kashitriptravels)*\n\n` +
     `*Service Type:* ${serviceType}\n` +
     `*Vehicle:* ${vehicle}\n` +
     `*Pickup:* ${pickup}\n` +
@@ -507,7 +507,7 @@ async function submitTaxiBooking() {
   }
 
   const msg =
-    `*🚖 NEW TAXI BOOKING REQUEST (KashiHolidays)*\n\n` +
+    `*🚖 NEW TAXI BOOKING REQUEST (Kashitriptravels)*\n\n` +
     `*Service Type:* ${serviceType}\n` +
     `*Vehicle:* ${vehicle}\n` +
     `*Pickup:* ${pickup}\n` +
