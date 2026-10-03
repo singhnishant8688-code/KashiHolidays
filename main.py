@@ -16,8 +16,8 @@ load_dotenv()
 
 # Initialize FastAPI App
 app = FastAPI(
-    title="Kashitriptravels API",
-    description="Backend service for Kashitriptravels Cab & Tour Booking System in Varanasi",
+    title="KashiTripTravels API",
+    description="Backend service for KashiTripTravels Cab & Tour Booking System in Varanasi",
     version="1.0.0"
 )
 
@@ -180,7 +180,7 @@ def calculate_estimated_fare(vehicle: str, service_type: str) -> str:
 def health_check():
     return {
         "status": "healthy",
-        "service": "Kashitriptravels FastAPI Backend",
+        "service": "KashiTripTravels FastAPI Backend",
         "timestamp": datetime.now().isoformat()
     }
 
@@ -192,7 +192,7 @@ def create_booking(booking: BookingRequest):
     created_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     wa_msg = (
-        f"Hi Kashitriptravels, I want to confirm booking {booking_id}:\n"
+        f"Hi KashiTripTravels, I want to confirm booking {booking_id}:\n"
         f"• Service: {booking.service_type}\n"
         f"• From: {booking.pickup_location}\n"
         f"• To: {booking.drop_location}\n"

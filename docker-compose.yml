@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: kashitriptravels-app
+    container_name: KashiTripTravels-app
     ports:
       - "8000:8000"
     env_file:
